@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="馒头花卷儿">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="SpringBoot使用JPA写原生sql">
+  <meta property="og:description" content="技术栈 技术积累 经验总结">
+  <meta property="og:site_name" content="素写星辰">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="suxiexingchen.github.io">
+  <!--SEO-->
+  <meta name="baidu-site-verification" content="R8XGxDTr9U">
+  <meta name="keywords" content="SpringBoot使用JPA写原生sql">
+  <meta name="description" content="SpringBoot使用JPA写原生sql <p>摘要：我们使用JPA的时候我们写的快捷方法，或者是HQL也就是对象sql。这里我们要用JPA来使用原生的sql进行数据库操作</p>">
+  <meta name="author" content="馒头花卷儿">
+  
+    <link rel="alternate" href="/atom.xml" title="素写星辰" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>素写星辰</title>
+
+  <!-- JQUERY -->
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- busuanzi JS -->
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">SpringBoot使用JPA写原生sql</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  主页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories">
+                  
+                  分类
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  标签
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/thank">
+                  
+                  鸣谢
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/contactway">
+                  
+                  联系方式
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By 馒头花卷儿</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-08-16</span>
+            <span class="time">18:09:53</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under: 
+
+<a href="/categories/SpringBoot/">SpringBoot</a> / <a href="/categories/SpringBoot/JPA/">JPA</a>
+</span>
+          
+        </div>
+
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/SpringBoot/">#SpringBoot</a> <a class="tag" href="/tags/java/">#java</a> <a class="tag" href="/tags/JPA/">#JPA</a> <a class="tag" href="/tags/SQL/">#SQL</a> <a class="tag" href="/tags/Mysql/">#Mysql</a>
+
+
+          </div>
+        
+
+        <!-- 不蒜子 -->
+        <div class="post-tags text-muted">
+          <span id="busuanzi_container_page_pv">阅读量:<a><span id="busuanzi_value_page_pv"></span></a>次</span>
+        </div>
+
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>摘要：我们使用JPA的时候我们写的快捷方法，或者是HQL也就是对象sql。这里我们要用JPA来使用原生的sql进行数据库操作</p>
+<a id="more"></a>
+<blockquote>
+<p>这里我们使用了一个注解 @Query(value = “sql”,nativeQuery = true)</p>
+</blockquote>
+<p>项目搭建等忽略，直接看Dao层,</p>
+<h3 id="value中的值就是你写的sql语句切记nativequery-true默认是false使用的hql语句"><a class="markdownIt-Anchor" href="#value中的值就是你写的sql语句切记nativequery-true默认是false使用的hql语句"></a> value中的值就是你写的sql语句，切记【nativeQuery = true】默认是false，使用的Hql语句</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.work.server.web.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.work.server.web.entity.TaskList;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.jpa.repository.JpaRepository;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.jpa.repository.Query;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Classname</span> TaskListDao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> TODO createByUserId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/7/8 10:24</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Created</span> by lyc</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TaskListDao</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">TaskList</span>,<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//获取completeFrequency次数小于remindFrequency次数，并且getTaskByUser为null的数据，随机排序获取一条数据</span></span><br><span class="line">    <span class="meta">@Query</span>(value = <span class="string">"select * from task_list t where t.completeFrequency &lt; t.remindFrequency and getTaskByUser is null order by rand() limit 1"</span>,nativeQuery = <span class="keyword">true</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TaskList <span class="title">getRand</span><span class="params">()</span></span>;    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <!--隐藏-->
+        <div class="imgViewDom">
+            <img class="imgViewBox" src>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    $('.post-content p img').click(function (e) {
+      $('.imgViewDom').show();
+      $('.imgViewDom img').attr('src',e.currentTarget.src);
+      $('html,body').addClass('ovflow')
+    })
+    $('.imgViewDom img').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+    $('.imgViewDom').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+  </script>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          文章总计:<a target="_blank" href>33</a>
+          分类总计:<a target="_blank" href>32</a>
+          标签总计:<a target="_blank" href>48</a>
+        </p>
+        <p class="copyright text-muted">
+          <span id="busuanzi_container_site_pv">本站总访问量:<a><span id="busuanzi_value_site_pv"></span></a>次</span>
+          <span id="busuanzi_container_site_uv">本站访客数:<a><span id="busuanzi_value_site_uv"></span></a>人次</span>
+          
+
+          
+
+        </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">lyc&苏子园.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

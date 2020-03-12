@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="馒头花卷儿">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="如何将七牛云测试域名变更为自定义域名">
+  <meta property="og:description" content="技术栈 技术积累 经验总结">
+  <meta property="og:site_name" content="素写星辰">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="suxiexingchen.github.io">
+  <!--SEO-->
+  <meta name="baidu-site-verification" content="R8XGxDTr9U">
+  <meta name="keywords" content="如何将七牛云测试域名变更为自定义域名">
+  <meta name="description" content="如何将七牛云测试域名变更为自定义域名 <p>摘要：你在刚刚使用七牛云存储一些图片或者文件之类的时候，七牛云会给你一个临时的域名大概是一个月的时间。一个月后你吃惊的发现，以前的图片怎么打不开了？不用着急其实就是因为测试域名被回收导致的，你需要配置你自己的域名了。如果你没有那抱歉你用不了的。</p>">
+  <meta name="author" content="馒头花卷儿">
+  
+    <link rel="alternate" href="/atom.xml" title="素写星辰" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>素写星辰</title>
+
+  <!-- JQUERY -->
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- busuanzi JS -->
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">如何将七牛云测试域名变更为自定义域名</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  主页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories">
+                  
+                  分类
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  标签
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/thank">
+                  
+                  鸣谢
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/contactway">
+                  
+                  联系方式
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By 馒头花卷儿</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-09-30</span>
+            <span class="time">18:09:53</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under: 
+
+<a href="/categories/云服务/">云服务</a> / <a href="/categories/云服务/七牛云/">七牛云</a>
+</span>
+          
+        </div>
+
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/七牛云/">#七牛云</a>
+
+
+          </div>
+        
+
+        <!-- 不蒜子 -->
+        <div class="post-tags text-muted">
+          <span id="busuanzi_container_page_pv">阅读量:<a><span id="busuanzi_value_page_pv"></span></a>次</span>
+        </div>
+
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>摘要：你在刚刚使用七牛云存储一些图片或者文件之类的时候，七牛云会给你一个临时的域名大概是一个月的时间。一个月后你吃惊的发现，以前的图片怎么打不开了？不用着急其实就是因为测试域名被回收导致的，你需要配置你自己的域名了。如果你没有那抱歉你用不了的。</p>
+<a id="more"></a>
+<h3 id="首先你要准备的就是已经开始使用的七牛云"><a class="markdownIt-Anchor" href="#首先你要准备的就是已经开始使用的七牛云"></a> 首先你要准备的就是已经开始使用的七牛云</h3>
+<h3 id="还有就是你已经备案过的域名"><a class="markdownIt-Anchor" href="#还有就是你已经备案过的域名"></a> 还有就是你已经备案过的域名</h3>
+<blockquote>
+<p>这里先看看官方给的解释</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%91/qiniu01.png-watermark1" alt="七牛官方解释"></p>
+<blockquote>
+<p>开始我们的配置，可以参考官方给的文档<br>
+<a href="https://developer.qiniu.com/kodo/kb/5158/how-to-transition-from-test-domain-name-to-a-custom-domain-name" target="_blank" rel="noopener">如何从测试域名过渡到自定义域名</a><br>
+<a href="https://developer.qiniu.com/fusion/kb/1322/how-to-configure-cname-domain-name" target="_blank" rel="noopener">如何配置域名的 CNAME</a></p>
+</blockquote>
+<h3 id="好了跟着我的步伐一点一点配置不要遗漏"><a class="markdownIt-Anchor" href="#好了跟着我的步伐一点一点配置不要遗漏"></a> 好了跟着我的步伐一点一点配置，不要遗漏</h3>
+<blockquote>
+<p>鼠标经过左侧会出现一个菜单，点击【融合CDN】<br>
+<img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%91/%E8%9E%8D%E5%90%88cdn.png-watermark1" alt="融合cdn"></p>
+</blockquote>
+<blockquote>
+<p>在【融合CDN】的界面中点击【域名管理】并添加【域名】<br>
+<img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%91/%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8D1.png-watermark1" alt="添加域名"></p>
+</blockquote>
+<blockquote>
+<p>进入添加域名的界面后，其他选项都不用动（如果你需要配置的除外）。<br>
+只需要配置【加速域名】这里就填写你准备配置的域名。<br>
+【源站配置】就选择你的存储空间名字就好。最后点击【创建】<br>
+<img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%91/%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8D2.png-watermark1" alt="添加域名"></p>
+</blockquote>
+<blockquote>
+<p>再次点击【域名管理】你就可以看到刚才自己配置的域名了。鼠标放上去就会显示【CNAME】值复制就好<br>
+<img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%91/%E5%A4%8D%E5%88%B6CNAME.png-watermark1" alt="复制CNAME"></p>
+</blockquote>
+<blockquote>
+<p>接着我们来到你购买域名的厂商，例如我的是阿里购买的。进入【阿里云】-&gt;【域名】点击【解析】<br>
+<img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%91/%E8%A7%A3%E6%9E%90.png-watermark1" alt="解析"></p>
+</blockquote>
+<blockquote>
+<p>点击【添加记录】<br>
+<img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%91/%E6%B7%BB%E5%8A%A0CNAME.png-watermark1" alt="添加CNAME"></p>
+</blockquote>
+<blockquote>
+<p>再次来到【对象存储】，这个配置是需要一点时间的，所以不要着急。过一会就可以看到成功了，再次获得外连接就可以打开图片了<br>
+<img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%91/CDN%E6%88%90%E5%8A%9F.png-watermark1" alt="CDN成功"></p>
+</blockquote>
+
+        </div>
+
+        <!--隐藏-->
+        <div class="imgViewDom">
+            <img class="imgViewBox" src>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    $('.post-content p img').click(function (e) {
+      $('.imgViewDom').show();
+      $('.imgViewDom img').attr('src',e.currentTarget.src);
+      $('html,body').addClass('ovflow')
+    })
+    $('.imgViewDom img').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+    $('.imgViewDom').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+  </script>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          文章总计:<a target="_blank" href>33</a>
+          分类总计:<a target="_blank" href>32</a>
+          标签总计:<a target="_blank" href>48</a>
+        </p>
+        <p class="copyright text-muted">
+          <span id="busuanzi_container_site_pv">本站总访问量:<a><span id="busuanzi_value_site_pv"></span></a>次</span>
+          <span id="busuanzi_container_site_uv">本站访客数:<a><span id="busuanzi_value_site_uv"></span></a>人次</span>
+          
+
+          
+
+        </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">lyc&苏子园.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

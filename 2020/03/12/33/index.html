@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="馒头花卷儿">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="SpringBoot启动时取消数据库连接和检测">
+  <meta property="og:description" content="技术栈 技术积累 经验总结">
+  <meta property="og:site_name" content="素写星辰">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="suxiexingchen.github.io">
+  <!--SEO-->
+  <meta name="baidu-site-verification" content="R8XGxDTr9U">
+  <meta name="keywords" content="SpringBoot启动时取消数据库连接和检测">
+  <meta name="description" content="SpringBoot启动时取消数据库连接和检测 <p>摘要：平常我们使用SpringBoot都是要连接数据库的，所以你在按照正常的情况下配置你的SpringBoot项目后，如果你不想使用数据库或者<br>
+没有进行数据库配置，系统就会报错。导致和我们预期不一致不能启动项目。</p>">
+  <meta name="author" content="馒头花卷儿">
+  
+    <link rel="alternate" href="/atom.xml" title="素写星辰" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>素写星辰</title>
+
+  <!-- JQUERY -->
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- busuanzi JS -->
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">SpringBoot启动时取消数据库连接和检测</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  主页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories">
+                  
+                  分类
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  标签
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/thank">
+                  
+                  鸣谢
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/contactway">
+                  
+                  联系方式
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By 馒头花卷儿</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-03-12</span>
+            <span class="time">18:09:53</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under: 
+
+<a href="/categories/SpringBoot/">SpringBoot</a> / <a href="/categories/SpringBoot/database/">database</a>
+</span>
+          
+        </div>
+
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/SpringBoot/">#SpringBoot</a> <a class="tag" href="/tags/database/">#database</a>
+
+
+          </div>
+        
+
+        <!-- 不蒜子 -->
+        <div class="post-tags text-muted">
+          <span id="busuanzi_container_page_pv">阅读量:<a><span id="busuanzi_value_page_pv"></span></a>次</span>
+        </div>
+
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>摘要：平常我们使用SpringBoot都是要连接数据库的，所以你在按照正常的情况下配置你的SpringBoot项目后，如果你不想使用数据库或者<br>
+没有进行数据库配置，系统就会报错。导致和我们预期不一致不能启动项目。</p>
+<a id="more"></a>
+<h3 id="如果按照平常的配置不配置数据库或者你就没有数据库会报以下错误以下错误是我配置了错误的数据库账号和密码导致的"><a class="markdownIt-Anchor" href="#如果按照平常的配置不配置数据库或者你就没有数据库会报以下错误以下错误是我配置了错误的数据库账号和密码导致的"></a> 如果按照平常的配置不配置数据库或者你就没有数据库会报以下错误（以下错误是我配置了错误的数据库账号和密码导致的）</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">Connected to the target VM, address: &apos;127.0.0.1:53221&apos;, transport: &apos;socket&apos;</span><br><span class="line"></span><br><span class="line">  .   ____          _            __ _ _</span><br><span class="line"> /\\ / ___&apos;_ __ _ _(_)_ __  __ _ \ \ \ \</span><br><span class="line">( ( )\___ | &apos;_ | &apos;_| | &apos;_ \/ _` | \ \ \ \</span><br><span class="line"> \\/  ___)| |_)| | | | | || (_| |  ) ) ) )</span><br><span class="line">  &apos;  |____| .__|_| |_|_| |_\__, | / / / /</span><br><span class="line"> =========|_|==============|___/=/_/_/_/</span><br><span class="line"> :: Spring Boot ::        (v2.1.7.RELEASE)</span><br><span class="line"></span><br><span class="line">2020-03-12 11:32:15.710  INFO 8672 --- [           main] com.example.demo.DemoApplication         : Starting DemoApplication on DESKTOP-J90MAVN with PID 8672 (E:\workingspace\demo-space\demo\target\classes started by lyc in E:\workingspace\demo-space\demo)</span><br><span class="line">2020-03-12 11:32:15.716  INFO 8672 --- [           main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default</span><br><span class="line">2020-03-12 11:32:16.388  INFO 8672 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.</span><br><span class="line">2020-03-12 11:32:16.444  INFO 8672 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50ms. Found 3 repository interfaces.</span><br><span class="line">2020-03-12 11:32:16.641  INFO 8672 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean &apos;org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration&apos; of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2208748f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)</span><br><span class="line">2020-03-12 11:32:16.809  INFO 8672 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8085 (http)</span><br><span class="line">2020-03-12 11:32:16.823  INFO 8672 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]</span><br><span class="line">2020-03-12 11:32:16.823  INFO 8672 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]</span><br><span class="line">2020-03-12 11:32:16.919  INFO 8672 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext</span><br><span class="line">2020-03-12 11:32:16.919  INFO 8672 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1120 ms</span><br><span class="line">Loading class `com.mysql.jdbc.Driver&apos;. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver&apos;. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.</span><br><span class="line">2020-03-12 11:32:17.065  INFO 8672 --- [           main] com.alibaba.druid.pool.DruidDataSource   : &#123;dataSource-1&#125; inited</span><br><span class="line">2020-03-12 11:32:17.558 ERROR 8672 --- [eate-1119371910] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://49.234.45.101:3306/work?characterEncoding=utf8, errorCode 1045, state 28000</span><br><span class="line"></span><br><span class="line">java.sql.SQLException: Access denied for user &apos;root&apos;@&apos;115.60.149.255&apos; (using password: YES)</span><br><span class="line">	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-java-8.0.17.jar:8.0.17]</span><br><span class="line">	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.17.jar:8.0.17]</span><br><span class="line">	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.17.jar:8.0.17]</span><br><span class="line">	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:827) ~[mysql-connector-java-8.0.17.jar:8.0.17]</span><br><span class="line">	at com.mysql.cj.jdbc.ConnectionImpl.&lt;init&gt;(ConnectionImpl.java:447) ~[mysql-connector-java-8.0.17.jar:8.0.17]</span><br><span class="line">	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-java-8.0.17.jar:8.0.17]</span><br><span class="line">	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:199) ~[mysql-connector-java-8.0.17.jar:8.0.17]</span><br><span class="line">	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1558) ~[druid-1.1.10.jar:1.1.10]</span><br><span class="line">	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1623) ~[druid-1.1.10.jar:1.1.10]</span><br><span class="line">	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2468) ~[druid-1.1.10.jar:1.1.10]</span><br><span class="line"></span><br><span class="line">2020-03-12 11:32:17.752 ERROR 8672 --- [eate-1119371910] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://49.234.45.101:3306/work?characterEncoding=utf8, errorCode 1045, state 28000</span><br></pre></td></tr></table></figure>
+<h3 id="最简单的解决办法就是找到你application启动类添加如下注解内容"><a class="markdownIt-Anchor" href="#最简单的解决办法就是找到你application启动类添加如下注解内容"></a> 最简单的解决办法就是找到你Application启动类添加如下注解内容</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span>(exclude=&#123;DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="完整版"><a class="markdownIt-Anchor" href="#完整版"></a> 完整版</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication(exclude=&#123;DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class&#125;)</span><br><span class="line">public class DemoApplication &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(DemoApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>思路解释：其实就是让系统忽略DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class</p>
+</blockquote>
+
+        </div>
+
+        <!--隐藏-->
+        <div class="imgViewDom">
+            <img class="imgViewBox" src>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    $('.post-content p img').click(function (e) {
+      $('.imgViewDom').show();
+      $('.imgViewDom img').attr('src',e.currentTarget.src);
+      $('html,body').addClass('ovflow')
+    })
+    $('.imgViewDom img').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+    $('.imgViewDom').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+  </script>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          文章总计:<a target="_blank" href>33</a>
+          分类总计:<a target="_blank" href>32</a>
+          标签总计:<a target="_blank" href>48</a>
+        </p>
+        <p class="copyright text-muted">
+          <span id="busuanzi_container_site_pv">本站总访问量:<a><span id="busuanzi_value_site_pv"></span></a>次</span>
+          <span id="busuanzi_container_site_uv">本站访客数:<a><span id="busuanzi_value_site_uv"></span></a>人次</span>
+          
+
+          
+
+        </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">lyc&苏子园.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="馒头花卷儿">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="jquery获取url及url参数的方法（避免乱码）">
+  <meta property="og:description" content="技术栈 技术积累 经验总结">
+  <meta property="og:site_name" content="素写星辰">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="suxiexingchen.github.io">
+  <!--SEO-->
+  <meta name="baidu-site-verification" content="R8XGxDTr9U">
+  <meta name="keywords" content="jquery获取url及url参数的方法（避免乱码）">
+  <meta name="description" content="jquery获取url及url参数的方法（避免乱码） <p>摘要：当你需要拿到地址栏上的参数的时候，这个篇文章一定会对你有帮助。这里我们使用jquery来获取获取url及url参数的方法，还要避免中文乱码哦。</p>">
+  <meta name="author" content="馒头花卷儿">
+  
+    <link rel="alternate" href="/atom.xml" title="素写星辰" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>素写星辰</title>
+
+  <!-- JQUERY -->
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- busuanzi JS -->
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">jquery获取url及url参数的方法（避免乱码）</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  主页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories">
+                  
+                  分类
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  标签
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/thank">
+                  
+                  鸣谢
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/contactway">
+                  
+                  联系方式
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By 馒头花卷儿</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-10-09</span>
+            <span class="time">18:09:53</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under: 
+
+<a href="/categories/前端/">前端</a> / <a href="/categories/前端/jquery/">jquery</a>
+</span>
+          
+        </div>
+
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/前端/">#前端</a> <a class="tag" href="/tags/jquery/">#jquery</a>
+
+
+          </div>
+        
+
+        <!-- 不蒜子 -->
+        <div class="post-tags text-muted">
+          <span id="busuanzi_container_page_pv">阅读量:<a><span id="busuanzi_value_page_pv"></span></a>次</span>
+        </div>
+
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>摘要：当你需要拿到地址栏上的参数的时候，这个篇文章一定会对你有帮助。这里我们使用jquery来获取获取url及url参数的方法，还要避免中文乱码哦。</p>
+<a id="more"></a>
+<h3 id="方法一jquery获取url"><a class="markdownIt-Anchor" href="#方法一jquery获取url"></a> 方法一：jquery获取url</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">'//cdn.bootcss.com/jquery/3.1.1/jquery.min.js'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> url =  <span class="built_in">window</span>.location.href;	</span><br><span class="line">    alert(url);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="方法二jquery获取url参数"><a class="markdownIt-Anchor" href="#方法二jquery获取url参数"></a> 方法二：jquery获取url参数</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">'//cdn.bootcss.com/jquery/3.1.1/jquery.min.js'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="comment">//获取url中的参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(^|&amp;)"</span> + name + <span class="string">"=([^&amp;]*)(&amp;|$)"</span>); <span class="comment">//构造一个含有目标参数的正则表达式对象</span></span><br><span class="line">    <span class="keyword">var</span> r = <span class="built_in">window</span>.location.search.substr(<span class="number">1</span>).match(reg);  <span class="comment">//匹配目标参数</span></span><br><span class="line">    <span class="keyword">if</span> (r != <span class="literal">null</span>) <span class="keyword">return</span> <span class="built_in">unescape</span>(r[<span class="number">2</span>]); <span class="keyword">return</span> <span class="literal">null</span>; <span class="comment">//返回参数值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> parameter = getUrlParam(<span class="string">"name"</span>);</span><br><span class="line">	</span><br><span class="line">alert(parameter);</span><br></pre></td></tr></table></figure>
+<p>但是方法二有一个弊端，就是遇到中文会显示乱码。显示英文和数字则没有问题的。方法三就是改良版</p>
+<h3 id="方法三jquery获取url参数兼容中文"><a class="markdownIt-Anchor" href="#方法三jquery获取url参数兼容中文"></a> 方法三:jquery获取url参数，兼容中文</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">'//cdn.bootcss.com/jquery/3.1.1/jquery.min.js'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">GetQueryString</span>(<span class="params">name</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(^|&amp;)"</span>+ name +<span class="string">"=([^&amp;]*)(&amp;|$)"</span>);</span><br><span class="line">        <span class="keyword">var</span> r = <span class="built_in">window</span>.location.search.substr(<span class="number">1</span>).match(reg);</span><br><span class="line">        <span class="keyword">if</span>(r!=<span class="literal">null</span>)<span class="keyword">return</span>  <span class="built_in">decodeURI</span>(r[<span class="number">2</span>]); <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> parameter = getUrlParam(<span class="string">"name"</span>);</span><br><span class="line">        	</span><br><span class="line">     alert(parameter);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>JavaScript unescape() 函数可对通过 escape() 编码的字符串进行解码。</p>
+</blockquote>
+<p>解码原理：该函数的工作原理是这样的：通过找到形式为 %xx 和 %uxxxx 的字符序列（x 表示十六进制的数字），用 Unicode 字符 \u00xx 和 \uxxxx 替换这样的字符序列进行解码。</p>
+<p>温馨提示：<br>
+ECMAScript v3 已从标准中删除了 unescape() 函数，并反对使用它，因此应该用 decodeURI() 和 decodeURIComponent() 取而代之。</p>
+<p>因此javascript对参数编码解码方法要一致：</p>
+<p>escape() unescape()</p>
+<p>encodeURI() decodeURI()</p>
+<p>encodeURIComponent() decodeURIComponent()</p>
+<p>注释：<br>
+encodeURI():主要用于整个URI<br>
+encode-URIComponent():主要用于对URI中的某一段进行编码。<br>
+它们的主要区别在于，encodeURI()不会对本身属于URI的特殊字符进行编码，例如冒号、正斜杠、问号和井字号；<br>
+而encodeURIComponent()则会对它发现的任何非标准字符进行编码。</p>
+<h3 id="所谓的乱码只是编码解码的问题而已-只要一致就没有问题"><a class="markdownIt-Anchor" href="#所谓的乱码只是编码解码的问题而已-只要一致就没有问题"></a> 所谓的乱码只是编码解码的问题而已。只要一致就没有问题</h3>
+
+        </div>
+
+        <!--隐藏-->
+        <div class="imgViewDom">
+            <img class="imgViewBox" src>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    $('.post-content p img').click(function (e) {
+      $('.imgViewDom').show();
+      $('.imgViewDom img').attr('src',e.currentTarget.src);
+      $('html,body').addClass('ovflow')
+    })
+    $('.imgViewDom img').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+    $('.imgViewDom').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+  </script>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          文章总计:<a target="_blank" href>33</a>
+          分类总计:<a target="_blank" href>32</a>
+          标签总计:<a target="_blank" href>48</a>
+        </p>
+        <p class="copyright text-muted">
+          <span id="busuanzi_container_site_pv">本站总访问量:<a><span id="busuanzi_value_site_pv"></span></a>次</span>
+          <span id="busuanzi_container_site_uv">本站访客数:<a><span id="busuanzi_value_site_uv"></span></a>人次</span>
+          
+
+          
+
+        </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">lyc&苏子园.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

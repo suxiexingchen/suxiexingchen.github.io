@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="馒头花卷儿">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="使用Bcrypt进行密码加密">
+  <meta property="og:description" content="技术栈 技术积累 经验总结">
+  <meta property="og:site_name" content="素写星辰">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="suxiexingchen.github.io">
+  <!--SEO-->
+  <meta name="baidu-site-verification" content="R8XGxDTr9U">
+  <meta name="keywords" content="使用Bcrypt进行密码加密">
+  <meta name="description" content="使用Bcrypt进行密码加密 <p>摘要：bcrypt是一种跨平台的文件加密工具。bcrypt 使用的是布鲁斯·施内尔在1993年发布的 Blowfish 加密算法。由它加密的文件可在所有支持的操作系统和处理器上进行转移。它的口令必须是8至56个字符，并将在内部被转化为448位的密钥。</p>">
+  <meta name="author" content="馒头花卷儿">
+  
+    <link rel="alternate" href="/atom.xml" title="素写星辰" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>素写星辰</title>
+
+  <!-- JQUERY -->
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- busuanzi JS -->
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">使用Bcrypt进行密码加密</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  主页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories">
+                  
+                  分类
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  标签
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/thank">
+                  
+                  鸣谢
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/contactway">
+                  
+                  联系方式
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By 馒头花卷儿</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-08-26</span>
+            <span class="time">18:09:53</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under: 
+
+<a href="/categories/加解密工具/">加解密工具</a> / <a href="/categories/加解密工具/Bcrypt/">Bcrypt</a>
+</span>
+          
+        </div>
+
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/加密解密/">#加密解密</a> <a class="tag" href="/tags/java/">#java</a> <a class="tag" href="/tags/Bcrypt/">#Bcrypt</a>
+
+
+          </div>
+        
+
+        <!-- 不蒜子 -->
+        <div class="post-tags text-muted">
+          <span id="busuanzi_container_page_pv">阅读量:<a><span id="busuanzi_value_page_pv"></span></a>次</span>
+        </div>
+
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>摘要：bcrypt是一种跨平台的文件加密工具。bcrypt 使用的是布鲁斯·施内尔在1993年发布的 Blowfish 加密算法。由它加密的文件可在所有支持的操作系统和处理器上进行转移。它的口令必须是8至56个字符，并将在内部被转化为448位的密钥。</p>
+<a id="more"></a>
+<blockquote>
+<p>Bcrypt就是一款加密工具，可以比较方便地实现数据的加密工作。你也可以简单理解为它内部自己实现了随机加盐处理<br>
+例如，我们使用MD5加密，每次加密后的密文其实都是一样的，这样就方便了MD5通过撞库的方式进行破解。</p>
+</blockquote>
+<h3 id="bcrypt生成的密文是60位的-而md5的是32位的"><a class="markdownIt-Anchor" href="#bcrypt生成的密文是60位的-而md5的是32位的"></a> Bcrypt生成的密文是60位的。而MD5的是32位的。</h3>
+<blockquote>
+<p>举个例子看看：首先这里我使用的maven引入的坐标是【spring-security】的引用</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--spring-security依赖包--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="我们编写测试类案例"><a class="markdownIt-Anchor" href="#我们编写测试类案例"></a> 我们编写测试类案例</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lyc</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2018-08-07</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CeShi</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="comment">//用户密码</span></span><br><span class="line">        String password = <span class="string">"123456"</span>;</span><br><span class="line">        <span class="comment">//密码加密</span></span><br><span class="line">        BCryptPasswordEncoder passwordEncoder=<span class="keyword">new</span> BCryptPasswordEncoder();</span><br><span class="line">        String newPassword = passwordEncoder.encode(password);<span class="comment">//加密</span></span><br><span class="line">        System.out.println(<span class="string">"加密密码为："</span>+newPassword);</span><br><span class="line">        <span class="comment">//对比这两个密码是否是同一个密码 </span></span><br><span class="line">        <span class="comment">// true 两个密码一致 false反之</span></span><br><span class="line">        <span class="keyword">boolean</span> matches = passwordEncoder.matches(password, newPassword);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我们得到的结果是:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">加密密码为：$2a$10$iRdNmYoINR8QqynemTsP2OzFtM7N5pFPoBFuzAtvR6YBtov4gRt7e</span><br><span class="line">两个密码是否一致true</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我们再运行一遍查看打印结果：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">加密密码为：$2a$10$kvc3uoQQDkfxTr3RuVpMJeBd7NZbPMMbma11hp1c68Kseioaqe4U.</span><br><span class="line">两个密码是否一致true</span><br></pre></td></tr></table></figure>
+<h3 id="发现多次加密后的密码都是不一样的这样我任你怎么撞库也难破解我的密码了"><a class="markdownIt-Anchor" href="#发现多次加密后的密码都是不一样的这样我任你怎么撞库也难破解我的密码了"></a> 发现多次加密后的密码都是不一样的，这样我任你怎么撞库也难破解我的密码了。</h3>
+
+        </div>
+
+        <!--隐藏-->
+        <div class="imgViewDom">
+            <img class="imgViewBox" src>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    $('.post-content p img').click(function (e) {
+      $('.imgViewDom').show();
+      $('.imgViewDom img').attr('src',e.currentTarget.src);
+      $('html,body').addClass('ovflow')
+    })
+    $('.imgViewDom img').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+    $('.imgViewDom').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+  </script>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          文章总计:<a target="_blank" href>33</a>
+          分类总计:<a target="_blank" href>32</a>
+          标签总计:<a target="_blank" href>48</a>
+        </p>
+        <p class="copyright text-muted">
+          <span id="busuanzi_container_site_pv">本站总访问量:<a><span id="busuanzi_value_site_pv"></span></a>次</span>
+          <span id="busuanzi_container_site_uv">本站访客数:<a><span id="busuanzi_value_site_uv"></span></a>人次</span>
+          
+
+          
+
+        </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">lyc&苏子园.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

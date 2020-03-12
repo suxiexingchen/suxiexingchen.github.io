@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="馒头花卷儿">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Spring Boot配置ssl证书将http升级为https">
+  <meta property="og:description" content="技术栈 技术积累 经验总结">
+  <meta property="og:site_name" content="素写星辰">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="suxiexingchen.github.io">
+  <!--SEO-->
+  <meta name="baidu-site-verification" content="R8XGxDTr9U">
+  <meta name="keywords" content="Spring Boot配置ssl证书将http升级为https">
+  <meta name="description" content="Spring Boot配置ssl证书将http升级为https <p>摘要：这里我们将详细介绍SpringBoot如何配置SSL，将你的http升级为https</p>">
+  <meta name="author" content="馒头花卷儿">
+  
+    <link rel="alternate" href="/atom.xml" title="素写星辰" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>素写星辰</title>
+
+  <!-- JQUERY -->
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- busuanzi JS -->
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Spring Boot配置ssl证书将http升级为https</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  主页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories">
+                  
+                  分类
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  标签
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/thank">
+                  
+                  鸣谢
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/contactway">
+                  
+                  联系方式
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By 馒头花卷儿</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-08-14</span>
+            <span class="time">18:09:53</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under: 
+
+<a href="/categories/SpringBoot/">SpringBoot</a> / <a href="/categories/SpringBoot/SSL/">SSL</a>
+</span>
+          
+        </div>
+
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/SpringBoot/">#SpringBoot</a> <a class="tag" href="/tags/java/">#java</a> <a class="tag" href="/tags/SSL/">#SSL</a> <a class="tag" href="/tags/Https/">#Https</a>
+
+
+          </div>
+        
+
+        <!-- 不蒜子 -->
+        <div class="post-tags text-muted">
+          <span id="busuanzi_container_page_pv">阅读量:<a><span id="busuanzi_value_page_pv"></span></a>次</span>
+        </div>
+
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>摘要：这里我们将详细介绍SpringBoot如何配置SSL，将你的http升级为https</p>
+<a id="more"></a>
+<h3 id="http和https的基本概念"><a class="markdownIt-Anchor" href="#http和https的基本概念"></a> Http和Https的基本概念</h3>
+<p>Http：是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从WWW服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。</p>
+<p>Https：是以安全为目标的HTTP通道，简单讲是HTTP的安全版，即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。</p>
+<p>Https协议的主要作用可以分为两种：一种是建立一个信息安全通道，来保证数据传输的安全；另一种就是确认网站的真实性。</p>
+<h3 id="https和http的区别主要如下"><a class="markdownIt-Anchor" href="#https和http的区别主要如下"></a> Https和Http的区别主要如下：</h3>
+<p>1、Https协议需要到ca申请证书，一般免费证书较少，因而需要一定费用。</p>
+<p>2、Http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议。</p>
+<p>3、Http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
+<p>4、Http的连接很简单，是无状态的；Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
+<h3 id="这里以腾讯云为例"><a class="markdownIt-Anchor" href="#这里以腾讯云为例"></a> 这里以腾讯云为例</h3>
+<blockquote>
+<p>1.首先我们来到你的域名这你要设置好你的服务器ip</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/SpringBoot/SSL01.png-watermark1" alt="SSL01"></p>
+<blockquote>
+<p>2.接下来到 SSL证书，确定你的证书是已颁发。</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/SpringBoot/SSL02.png-watermark1" alt="SSL02"></p>
+<blockquote>
+<p>3.点击下载证书，然后解压，我使用的是tomcat所以打开tomcat文件夹</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/SpringBoot/SSL03.png-watermark1" alt="SSL03"></p>
+<blockquote>
+<p>4.这里有一个jks的文件</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/SpringBoot/SSL04.png-watermark1" alt="SSL04"></p>
+<blockquote>
+<p>5.把jks文件复制到你的工程resources文件下</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/SpringBoot/SSL05.png-watermark1" alt="SSL05"></p>
+<blockquote>
+<p>6.这里的证书别名在腾讯云上就是这个通用名称</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/SpringBoot/SSL06.png-watermark1" alt="SSL06"></p>
+<blockquote>
+<p>7.打开你的SpringBoot工程中,打开application.properties文件添加以下内容</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#https加密端口号 443</span><br><span class="line">server.port=443</span><br><span class="line">#SSL证书路径 一定要加上classpath:</span><br><span class="line">server.ssl.key-store=  classpath:www.XXXX.cn.jks</span><br><span class="line">#SSL证书密码</span><br><span class="line">server.ssl.key-store-password=XXX</span><br><span class="line">#证书类型</span><br><span class="line">server.ssl.key-store-type=JKS</span><br><span class="line">#证书别名</span><br><span class="line">server.ssl.key-alias=www.XXX.cn</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>8.再打开你的XXXApplication文件添加以下代码,什么都不用改动，直接粘贴</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.XXX.XXX;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.catalina.Context;</span><br><span class="line"><span class="keyword">import</span> org.apache.catalina.connector.Connector;</span><br><span class="line"><span class="keyword">import</span> org.apache.tomcat.util.descriptor.web.SecurityCollection;</span><br><span class="line"><span class="keyword">import</span> org.apache.tomcat.util.descriptor.web.SecurityConstraint;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ComponentScan;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WorkApplication</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(WorkApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * http重定向到https</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TomcatServletWebServerFactory <span class="title">servletContainer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        TomcatServletWebServerFactory tomcat = <span class="keyword">new</span> TomcatServletWebServerFactory() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">postProcessContext</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">                SecurityConstraint constraint = <span class="keyword">new</span> SecurityConstraint();</span><br><span class="line">                constraint.setUserConstraint(<span class="string">"CONFIDENTIAL"</span>);</span><br><span class="line">                SecurityCollection collection = <span class="keyword">new</span> SecurityCollection();</span><br><span class="line">                collection.addPattern(<span class="string">"/*"</span>);</span><br><span class="line">                constraint.addCollection(collection);</span><br><span class="line">                context.addConstraint(constraint);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        tomcat.addAdditionalTomcatConnectors(httpConnector());</span><br><span class="line">        <span class="keyword">return</span> tomcat;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Connector <span class="title">httpConnector</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Connector connector = <span class="keyword">new</span> Connector(<span class="string">"org.apache.coyote.http11.Http11NioProtocol"</span>);</span><br><span class="line">        connector.setScheme(<span class="string">"http"</span>);</span><br><span class="line">        <span class="comment">//Connector监听的http的端口号</span></span><br><span class="line">        connector.setPort(<span class="number">8080</span>);</span><br><span class="line">        connector.setSecure(<span class="keyword">false</span>);</span><br><span class="line">        <span class="comment">//监听到http的端口号后转向到的https的端口号</span></span><br><span class="line">        connector.setRedirectPort(<span class="number">443</span>);</span><br><span class="line">        <span class="keyword">return</span> connector;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>9.这里你的工程应该打包成jar包，最后你布置到你的云服务器上就可以了，访问后</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/SpringBoot/SSL07.png-watermark1" alt="SSL07"></p>
+
+        </div>
+
+        <!--隐藏-->
+        <div class="imgViewDom">
+            <img class="imgViewBox" src>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    $('.post-content p img').click(function (e) {
+      $('.imgViewDom').show();
+      $('.imgViewDom img').attr('src',e.currentTarget.src);
+      $('html,body').addClass('ovflow')
+    })
+    $('.imgViewDom img').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+    $('.imgViewDom').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+  </script>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          文章总计:<a target="_blank" href>33</a>
+          分类总计:<a target="_blank" href>32</a>
+          标签总计:<a target="_blank" href>48</a>
+        </p>
+        <p class="copyright text-muted">
+          <span id="busuanzi_container_site_pv">本站总访问量:<a><span id="busuanzi_value_site_pv"></span></a>次</span>
+          <span id="busuanzi_container_site_uv">本站访客数:<a><span id="busuanzi_value_site_uv"></span></a>人次</span>
+          
+
+          
+
+        </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">lyc&苏子园.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

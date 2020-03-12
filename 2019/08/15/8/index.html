@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="馒头花卷儿">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="七牛云上的图片如何添加水印">
+  <meta property="og:description" content="技术栈 技术积累 经验总结">
+  <meta property="og:site_name" content="素写星辰">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="suxiexingchen.github.io">
+  <!--SEO-->
+  <meta name="baidu-site-verification" content="R8XGxDTr9U">
+  <meta name="keywords" content="七牛云上的图片如何添加水印">
+  <meta name="description" content="七牛云上的图片如何添加水印 <p>摘要：你一定不想让你的图片被盗用，那么添加一个水印一定值得你拥有。</p>">
+  <meta name="author" content="馒头花卷儿">
+  
+    <link rel="alternate" href="/atom.xml" title="素写星辰" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>素写星辰</title>
+
+  <!-- JQUERY -->
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- busuanzi JS -->
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">七牛云上的图片如何添加水印</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  主页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories">
+                  
+                  分类
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  标签
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/thank">
+                  
+                  鸣谢
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/contactway">
+                  
+                  联系方式
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By 馒头花卷儿</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-08-15</span>
+            <span class="time">18:09:53</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under: 
+
+<a href="/categories/云服务/">云服务</a> / <a href="/categories/云服务/七牛云/">七牛云</a>
+</span>
+          
+        </div>
+
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/七牛云/">#七牛云</a> <a class="tag" href="/tags/图片水印/">#图片水印</a>
+
+
+          </div>
+        
+
+        <!-- 不蒜子 -->
+        <div class="post-tags text-muted">
+          <span id="busuanzi_container_page_pv">阅读量:<a><span id="busuanzi_value_page_pv"></span></a>次</span>
+        </div>
+
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>摘要：你一定不想让你的图片被盗用，那么添加一个水印一定值得你拥有。</p>
+<a id="more"></a>
+<blockquote>
+<p>首先我们登录到七牛云并来到你的图片存储位置点击【图片样式】</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%9101.png-watermark1" alt="图片引用"></p>
+<blockquote>
+<p>在图片样式中选择【新建图片样式】</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%9102.png-watermark1" alt="图片引用"></p>
+<blockquote>
+<p>在图片水印栏中选择你想要的水印【图片】或【文字】这里我使用的是文字</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%9103.png-watermark1" alt="图片引用"></p>
+<blockquote>
+<p>设置好你的文字水印和基本样式</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%9104.png-watermark1" alt="图片引用"></p>
+<blockquote>
+<p>最后你需要保存样式，并给这个样式起个名字（只能使用数字、字母、小数点）</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%9105.png-watermark1" alt="图片引用"></p>
+<blockquote>
+<p>做好水印样式以后我们拿到外连接地址</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%9106.png-watermark1" alt="图片引用"></p>
+<blockquote>
+<p>（外联地址） 和 （-图片样式名称） 拼接在一起</p>
+</blockquote>
+<p>外联地址是：<a href="http://qiniu.zuoyoush.com/img/Markdown/MarkdownPad2/00101.png" target="_blank" rel="noopener">http://qiniu.zuoyoush.com/img/Markdown/MarkdownPad2/00101.png</a><br>
+图片样式是：watermark1<br>
+中间的符号是：-<br>
+就像这样：<a href="http://qiniu.zuoyoush.com/img/Markdown/MarkdownPad2/00101.png-watermark1" target="_blank" rel="noopener">http://qiniu.zuoyoush.com/img/Markdown/MarkdownPad2/00101.png-watermark1</a></p>
+<p><img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%9107.png-watermark1" alt="图片引用"></p>
+<blockquote>
+<p>最后访问地址就会看到你你的水印已经加上去了</p>
+</blockquote>
+<p><img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E4%B8%83%E7%89%9B%E4%BA%9108.png-watermark1" alt="图片引用"></p>
+
+        </div>
+
+        <!--隐藏-->
+        <div class="imgViewDom">
+            <img class="imgViewBox" src>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    $('.post-content p img').click(function (e) {
+      $('.imgViewDom').show();
+      $('.imgViewDom img').attr('src',e.currentTarget.src);
+      $('html,body').addClass('ovflow')
+    })
+    $('.imgViewDom img').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+    $('.imgViewDom').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+  </script>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          文章总计:<a target="_blank" href>33</a>
+          分类总计:<a target="_blank" href>32</a>
+          标签总计:<a target="_blank" href>48</a>
+        </p>
+        <p class="copyright text-muted">
+          <span id="busuanzi_container_site_pv">本站总访问量:<a><span id="busuanzi_value_site_pv"></span></a>次</span>
+          <span id="busuanzi_container_site_uv">本站访客数:<a><span id="busuanzi_value_site_uv"></span></a>人次</span>
+          
+
+          
+
+        </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">lyc&苏子园.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

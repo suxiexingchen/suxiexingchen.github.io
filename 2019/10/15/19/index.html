@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="馒头花卷儿">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="jquery使用ajax请求成功，返回了数据，但是不进success">
+  <meta property="og:description" content="技术栈 技术积累 经验总结">
+  <meta property="og:site_name" content="素写星辰">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="suxiexingchen.github.io">
+  <!--SEO-->
+  <meta name="baidu-site-verification" content="R8XGxDTr9U">
+  <meta name="keywords" content="jquery使用ajax请求成功，返回了数据，但是不进success">
+  <meta name="description" content="jquery使用ajax请求成功，返回了数据，但是不进success <p>摘要：前端使用ajax请求成功，后台返回了数据成功，但是不进success而是进入了error。这里我详细介绍下我这出现的问题。</p>">
+  <meta name="author" content="馒头花卷儿">
+  
+    <link rel="alternate" href="/atom.xml" title="素写星辰" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>素写星辰</title>
+
+  <!-- JQUERY -->
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- busuanzi JS -->
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">jquery使用ajax请求成功，返回了数据，但是不进success</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  主页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories">
+                  
+                  分类
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  标签
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/thank">
+                  
+                  鸣谢
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/single/contactway">
+                  
+                  联系方式
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By 馒头花卷儿</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-10-15</span>
+            <span class="time">18:09:53</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under: 
+
+<a href="/categories/前端/">前端</a> / <a href="/categories/前端/jquery/">jquery</a>
+</span>
+          
+        </div>
+
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/前端/">#前端</a> <a class="tag" href="/tags/jquery/">#jquery</a> <a class="tag" href="/tags/ajax/">#ajax</a> <a class="tag" href="/tags/post/">#post</a>
+
+
+          </div>
+        
+
+        <!-- 不蒜子 -->
+        <div class="post-tags text-muted">
+          <span id="busuanzi_container_page_pv">阅读量:<a><span id="busuanzi_value_page_pv"></span></a>次</span>
+        </div>
+
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>摘要：前端使用ajax请求成功，后台返回了数据成功，但是不进success而是进入了error。这里我详细介绍下我这出现的问题。</p>
+<a id="more"></a>
+<h3 id="这里其实应该首先看你的前端报错"><a class="markdownIt-Anchor" href="#这里其实应该首先看你的前端报错"></a> 这里其实应该首先看你的前端报错</h3>
+<p>这里报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SyntaxError: JSON.parse: unexpected character at line 1 column 1 of the JSON data</span><br></pre></td></tr></table></figure>
+<p><img src="http://qiniu.zuoyoush.com/img/%E5%89%8D%E7%AB%AF/jquery/aiax%E6%8A%A5%E9%94%99.png-watermark1" alt="ajax错误"></p>
+<h3 id="仔细观察这张图这里明明状态是200但是在ajax中却会进入到error而不会进去到success为什么呢"><a class="markdownIt-Anchor" href="#仔细观察这张图这里明明状态是200但是在ajax中却会进入到error而不会进去到success为什么呢"></a> 仔细观察这张图，这里明明状态是200，但是在ajax中却会进入到error而不会进去到success，为什么呢？</h3>
+<blockquote>
+<p>贴一下ajax的代码看一下：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type: <span class="string">"POST"</span>,</span><br><span class="line">    contentType: <span class="string">"application/json"</span>,</span><br><span class="line">    url: <span class="string">"/manage "</span>,</span><br><span class="line">    data:<span class="built_in">JSON</span>.stringify(request),</span><br><span class="line">    dataType: <span class="string">"JSON"</span>,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(result);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//请求失败，包含具体的错误信息</span></span><br><span class="line">    error : <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e.status);</span><br><span class="line">        <span class="built_in">console</span>.log(e.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="其实在错误中已经说的很明显是json解析的错误那么再来看我后台返回的只是一个字符串不是json格式的"><a class="markdownIt-Anchor" href="#其实在错误中已经说的很明显是json解析的错误那么再来看我后台返回的只是一个字符串不是json格式的"></a> 其实在错误中已经说的很明显是Json解析的错误，那么再来看我后台返回的只是一个字符串不是json格式的</h3>
+<blockquote>
+<p>所以问题找到了就是因为后台返回的不是Json格式，而只是个字符串。所以造成解析异常。<br>
+这里需要注意的是：<br>
+为什么前端会解析成json呢？其实就是因为设置了dataType: “JSON”<br>
+这里我们已经规定了接受的格式是json，可是我后台返回的却是个字符串。所以一定会错的。也就进入了error。</p>
+</blockquote>
+<h3 id="这里我们把后台返回的改成返回json字符串看没有问题"><a class="markdownIt-Anchor" href="#这里我们把后台返回的改成返回json字符串看没有问题"></a> 这里我们把后台返回的改成返回json字符串，看没有问题</h3>
+<p><img src="http://qiniu.zuoyoush.com/img/%E5%89%8D%E7%AB%AF/jquery/aiax%E6%AD%A3%E7%A1%AE.png-watermark1" alt="ajax正确"></p>
+<blockquote>
+<p>其实这里还有一种办法就是设置【 dataType: “text”】这样就会接着后台传送的纯文本信息。若果你需要的话。</p>
+</blockquote>
+<h3 id="好了最后贴一下datatype的可选值"><a class="markdownIt-Anchor" href="#好了最后贴一下datatype的可选值"></a> 好了最后贴一下dataType的可选值</h3>
+<blockquote>
+<p>参考链接：<a href="https://www.w3school.com.cn/jquery/ajax_ajax.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/jquery/ajax_ajax.asp</a></p>
+</blockquote>
+<p>dataType<br>
+类型：String<br>
+预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断，比如 XML MIME 类型就被识别为 XML。在 1.4 中，JSON 就会生成一个 JavaScript 对象，而 script 则会执行这个脚本。随后服务器端返回的数据会根据这个值解析后，传递给回调函数。可用值:<br>
+•	“xml”: 返回 XML 文档，可用 jQuery 处理。<br>
+•	“html”: 返回纯文本 HTML 信息；包含的 script 标签会在插入 dom 时执行。<br>
+•	“script”: 返回纯文本 JavaScript 代码。不会自动缓存结果。除非设置了 “cache” 参数。注意：在远程请求时(不在同一个域下)，所有 POST 请求都将转为 GET 请求。（因为将使用 DOM 的 script标签来加载）<br>
+•	“json”: 返回 JSON 数据 。<br>
+•	“jsonp”: JSONP 格式。使用 JSONP 形式调用函数时，如 “myurl?callback=?” jQuery 将自动替换 ? 为正确的函数名，以执行回调函数。<br>
+•	“text”: 返回纯文本字符串</p>
+
+        </div>
+
+        <!--隐藏-->
+        <div class="imgViewDom">
+            <img class="imgViewBox" src>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    $('.post-content p img').click(function (e) {
+      $('.imgViewDom').show();
+      $('.imgViewDom img').attr('src',e.currentTarget.src);
+      $('html,body').addClass('ovflow')
+    })
+    $('.imgViewDom img').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+    $('.imgViewDom').click(function (e) {
+      $('.imgViewDom').hide()
+      $('html,body').removeClass('ovflow')
+    })
+  </script>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          文章总计:<a target="_blank" href>33</a>
+          分类总计:<a target="_blank" href>32</a>
+          标签总计:<a target="_blank" href>48</a>
+        </p>
+        <p class="copyright text-muted">
+          <span id="busuanzi_container_site_pv">本站总访问量:<a><span id="busuanzi_value_site_pv"></span></a>次</span>
+          <span id="busuanzi_container_site_uv">本站访客数:<a><span id="busuanzi_value_site_uv"></span></a>人次</span>
+          
+
+          
+
+        </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">lyc&苏子园.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
