@@ -130,7 +130,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-12-09</span>
-            <span class="time">14:52:12</span>
+            <span class="time">14:58:35</span>
           </span>
           
           <!--  Categories  -->
@@ -169,10 +169,10 @@
 <p>再来看在html页面中的使用</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> successFun = <span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">    alert(<span class="string">"请求成功。"</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> errorFun = <span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">    alert(<span class="string">"网络异常，请重试。"</span>)</span><br><span class="line">&#125;;</span><br><span class="line">ajaxPost(<span class="string">"/user/memberCenter"</span>,<span class="literal">null</span>,signature,successFun,errorFun);</span><br></pre></td></tr></table></figure>
-<h3 id="%E5%85%B6%E5%AE%9E%E8%BF%99%E5%8F%AA%E6%98%AF%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%B0%81%E8%A3%85%EF%BC%8C%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E9%BA%BB%E7%83%A6%E7%9A%84%E4%BD%86%E6%98%AF%E9%9C%80%E8%A6%81%E4%BA%A4%E4%BB%A3%E4%B8%80%E4%B8%8B%E4%BD%A0%E5%86%8D%E5%BC%95%E5%85%A5%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%5BcommonUtils.js%5D%20%E7%9A%84%E6%96%87%E4%BB%B6%E5%89%8D%E4%B8%80%E5%AE%9A%E8%A6%81%E5%BC%95%E5%85%A5jquery%E5%90%A6%E5%88%99%E6%98%AF%E4%B8%8D%E8%83%BD%E7%94%A8%E7%9A%84">其实这只是一个简单的封装，没有什么麻烦的但是需要交代一下你再引入自己写的[commonUtils.js] 的文件前一定要引入jquery否则是不能用的</h3>
+<h3 id="其实这只是一个简单的封装没有什么麻烦的但是需要交代一下你再引入自己写的commonutilsjs-的文件前一定要引入jquery否则是不能用的"><a class="markdownIt-Anchor" href="#其实这只是一个简单的封装没有什么麻烦的但是需要交代一下你再引入自己写的commonutilsjs-的文件前一定要引入jquery否则是不能用的"></a> 其实这只是一个简单的封装，没有什么麻烦的但是需要交代一下你再引入自己写的[commonUtils.js] 的文件前一定要引入jquery否则是不能用的</h3>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">'./me/js/commonUtils.js'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p><img src="-watermark1" alt="图片引用"></p>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+
         </div>
 
         <!--隐藏-->

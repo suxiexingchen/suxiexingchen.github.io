@@ -130,7 +130,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-08-05</span>
-            <span class="time">14:52:12</span>
+            <span class="time">14:58:35</span>
           </span>
           
           <!--  Categories  -->
@@ -161,25 +161,25 @@
         <div class="post-content">
           <p>摘要：controller @requestbody 包含MultipartFile 类型属性报错解决方案</p>
 <a id="more"></a>
-<h3 id="%E6%8A%A5%E9%94%99%E5%8E%9F%E5%9B%A0">报错原因</h3>
+<h3 id="报错原因"><a class="markdownIt-Anchor" href="#报错原因"></a> 报错原因</h3>
 <p>前端在接口上传文件的同时会将请求header的content-type设置为:multipart/form-data</p>
 <p>或者form表单提交的时候将enctype设置为&quot;multipart/form-data&quot; 。</p>
 <p>后端收到请求时由于请求体有@RequestBody 注解标识，通常会用application/json, application/xml处理content-type</p>
-<h3 id="%E6%AD%A4%E6%97%B6%E4%BC%9A%E6%8A%A5%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E7%9A%84%E9%97%AE%E9%A2%98%E5%B0%B1%E4%BC%9A%E6%8A%A5%E4%BB%A5%E4%B8%8B%E9%94%99%E8%AF%AF">此时会报编码格式的问题就会报以下错误</h3>
-<pre><code class="language-json">{
-	&quot;timestamp&quot;: 1565077141995,
-	&quot;status&quot;: 415,
-	&quot;error&quot;: &quot;Unsupported Media Type&quot;,
-	&quot;message&quot;: &quot;Content type 'multipart/form-data;boundary=--------------------------541536646861632702696448;charset=UTF-8' not supported&quot;,
-	&quot;path&quot;: &quot;/fileUpload/picture&quot;
+<h3 id="此时会报编码格式的问题就会报以下错误"><a class="markdownIt-Anchor" href="#此时会报编码格式的问题就会报以下错误"></a> 此时会报编码格式的问题就会报以下错误</h3>
+<pre class="highlight"><code class="json">{
+	<span class="attr">"timestamp"</span>: <span class="number">1565077141995</span>,
+	<span class="attr">"status"</span>: <span class="number">415</span>,
+	<span class="attr">"error"</span>: <span class="string">"Unsupported Media Type"</span>,
+	<span class="attr">"message"</span>: <span class="string">"Content type 'multipart/form-data;boundary=--------------------------541536646861632702696448;charset=UTF-8' not supported"</span>,
+	<span class="attr">"path"</span>: <span class="string">"/fileUpload/picture"</span>
 }
 </code></pre>
-<h3 id="%E7%BB%8F%E8%BF%87%E5%88%86%E6%9E%90%EF%BC%9A">经过分析：</h3>
+<h3 id="经过分析"><a class="markdownIt-Anchor" href="#经过分析"></a> 经过分析：</h3>
 <p>MultipartFile这样的multipart/form-data媒体类型优先级会高于application/json，</p>
 <p>而配置@RequestBody 感觉使用一个低优先级的handle一个高优先级的从而报错。</p>
 <p>所以在multipart/form-data媒体类型请求时将@RequestBody去掉就可以了。</p>
 <p>换而言之你不能在一个接口中既要获取数据，也要获取文件，除非你不是用这样的方式。</p>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+
         </div>
 
         <!--隐藏-->

@@ -130,7 +130,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-08-22</span>
-            <span class="time">14:52:12</span>
+            <span class="time">14:58:35</span>
           </span>
           
           <!--  Categories  -->
@@ -161,16 +161,16 @@
         <div class="post-content">
           <p>摘要： SpringBoot默认的打包方式是jar包，但是我们试管了war包去布置到服务器的生活。今天就全程来讲解下如何打war包。和需要配置哪些。</p>
 <a id="more"></a>
-<h3 id="1.%E9%A6%96%E5%85%88%20%E4%BF%AE%E6%94%B9pom.xml%E4%B8%8B%E7%9A%84%E6%89%93%E5%8C%85%E6%96%B9%E5%BC%8F">1.首先 修改pom.xml下的打包方式</h3>
+<h3 id="1首先-修改pomxml下的打包方式"><a class="markdownIt-Anchor" href="#1首先-修改pomxml下的打包方式"></a> 1.首先 修改pom.xml下的打包方式</h3>
 <p><img src="http://qiniu.zuoyoush.com/img/SpringBoot/war/20181220142950253.png-watermark1" alt="图片引用"></p>
-<h3 id="2.%E6%B7%BB%E5%8A%A0servlet-api%E4%BE%9D%E8%B5%96">2.添加servlet-api依赖</h3>
+<h3 id="2添加servlet-api依赖"><a class="markdownIt-Anchor" href="#2添加servlet-api依赖"></a> 2.添加servlet-api依赖</h3>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--添加servlet-api的依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="3.%E5%8E%BB%E9%99%A4springboot%20%E5%86%85%E5%B5%8C%E7%9A%84tomcat%E6%A8%A1%E5%9D%97">3.去除springboot 内嵌的tomcat模块</h3>
+<h3 id="3去除springboot-内嵌的tomcat模块"><a class="markdownIt-Anchor" href="#3去除springboot-内嵌的tomcat模块"></a> 3.去除springboot 内嵌的tomcat模块</h3>
 <blockquote>
 <p>其实如果你使用的是直接创建出来的SpringBoot工程就是没有修改过pom中的上层依赖不去除也是没问题的。因为你是使用的外部的tomcat所以这个包还是去掉的好。建议还是要去除，一是为了不引起不必要的冲突，二也是可以使打出来的war包小一点</p>
 </blockquote>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--忽略内嵌tomcat，打包部署到tomcat。注*本地运行的时候要把这一段忽略引入个注释掉，要不然项目启动不了--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="4.%E8%BF%98%E6%9C%89%E4%B8%80%E6%AD%A5%E7%89%B9%E5%88%AB%E7%9A%84%E9%87%8D%E8%A6%81%E9%82%A3%E5%B0%B1%E6%98%AF%E3%80%90%E7%BB%A7%E6%89%BFSpringBootServletInitializer%E5%B9%B6%E9%87%8D%E5%86%99configure%E8%BF%99%E4%B8%AA%E6%96%B9%E6%B3%95%E3%80%91">4.还有一步特别的重要那就是【继承SpringBootServletInitializer并重写configure这个方法】</h3>
+<h3 id="4还有一步特别的重要那就是继承springbootservletinitializer并重写configure这个方法"><a class="markdownIt-Anchor" href="#4还有一步特别的重要那就是继承springbootservletinitializer并重写configure这个方法"></a> 4.还有一步特别的重要那就是【继承SpringBootServletInitializer并重写configure这个方法】</h3>
 <blockquote>
 <p>这里有两种方法做：</p>
 </blockquote>
@@ -183,7 +183,7 @@
 <blockquote>
 <p>假如你在打包期间出现了这个错误</p>
 </blockquote>
-<h2 id="%E6%8A%A5%E9%94%99%E4%B8%80">报错一</h2>
+<h2 id="报错一"><a class="markdownIt-Anchor" href="#报错一"></a> 报错一</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] Failed to execute goal org.apache.maven.plugins:maven-war-plugin:2.6:war (default-war) on project wjyb-wx-web: Error assembling WAR: webxml attribute is required (or pre-existing WEB-INF/web.xml if executing in update mode) -&gt; [Help 1]</span><br><span class="line">[ERROR] </span><br><span class="line">[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.</span><br><span class="line">[ERROR] Re-run Maven using the -X switch to enable full debug logging.</span><br><span class="line">[ERROR] </span><br><span class="line">[ERROR] For more information about the errors and possible solutions, please read the following articles:</span><br><span class="line">[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>其实意思很明白，找不到web.xml呗。那么我们需要添加这么一段</p>
@@ -197,12 +197,12 @@
 <p>现在应该是打包没有什么问题了，现在我们拿着war包去tomcat里去运行。</p>
 <p>这里交代一下springBoot最低使用的tomcat8.这里不具体讨论需要哪个版本的最好。</p>
 <p>如果需要配置支持tomcat7也是有点麻烦的，虽然也是可以。但是兼容什么的都不好。</p>
-<h2 id="%E9%94%99%E8%AF%AF%E4%BA%8C">错误二</h2>
+<h2 id="错误二"><a class="markdownIt-Anchor" href="#错误二"></a> 错误二</h2>
 <blockquote>
 <p>现在运行war包后我这又出现了一个错误，来看。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ase.addChild: start:</span><br><span class="line"> org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/wjyb-wx-web-0.0.1-SNAPSHOT]]</span><br><span class="line">        at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:162)</span><br><span class="line">        at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:755)</span><br><span class="line">        at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:731)</span><br><span class="line">        at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:717)</span><br><span class="line">        at org.apache.catalina.startup.HostConfig.deployWAR(HostConfig.java:973)</span><br><span class="line">        at org.apache.catalina.startup.HostConfig$DeployWar.run(HostConfig.java:1849)</span><br><span class="line">        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)</span><br><span class="line">        at java.util.concurrent.FutureTask.run(FutureTask.java:266)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)</span><br><span class="line">        at java.lang.Thread.run(Thread.java:748)</span><br><span class="line">Caused by: java.lang.IllegalArgumentException: LoggerFactory is not a Logback LoggerContext but Logback is on the classpath. Either remove Logback or the competing implementation (class org.apache.logging.slf4j.Log4jLoggerFactory loaded from file:/C:/D/apache-tomcat-8.0.51/webapps/wjyb-wx-web-0.0.1-SNAPSHOT/WEB-INF/lib/log4j-slf4j-impl-2.10.0.jar). If you are using WebLogic you will need to add &apos;org.slf4j&apos; to prefer-application-packages in WEB-INF/weblogic.xml: org.apache.logg</span><br></pre></td></tr></table></figure>
-<h3 id="%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9C%8B%E9%82%A3%E4%B9%88%E5%A4%9A%E5%95%8A%E7%9B%B4%E6%8E%A5%E7%9C%8B%E4%BB%80%E4%B9%88%E5%BC%95%E8%B5%B7%E7%9A%84%E5%B0%B1%E5%A5%BD%EF%BC%9ACaused%20by">不需要看那么多啊直接看什么引起的就好：Caused by</h3>
+<h3 id="不需要看那么多啊直接看什么引起的就好caused-by"><a class="markdownIt-Anchor" href="#不需要看那么多啊直接看什么引起的就好caused-by"></a> 不需要看那么多啊直接看什么引起的就好：Caused by</h3>
 <blockquote>
 <p>很明显tomcat有自己的日志记录，而我的项目中也包含了这个。原因明白了这个好说，排除了就好。我们这么改</p>
 </blockquote>
@@ -214,7 +214,7 @@
 <p>然后我这就完美运行了啊。所以说遇到为不要着急，一定要去寻找出问题的原因。再去解决，不要直接就去网上找。你会被很多人带到坑里面去的。</p>
 </blockquote>
 <p><img src="http://qiniu.zuoyoush.com/img/SpringBoot/war/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190822141159.png-watermark1" alt="图片引用"></p>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+
         </div>
 
         <!--隐藏-->
