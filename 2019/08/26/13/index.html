@@ -130,7 +130,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-08-26</span>
-            <span class="time">14:28:15</span>
+            <span class="time">14:52:12</span>
           </span>
           
           <!--  Categories  -->
@@ -165,12 +165,12 @@
 <p>Bcrypt就是一款加密工具，可以比较方便地实现数据的加密工作。你也可以简单理解为它内部自己实现了随机加盐处理<br>
 例如，我们使用MD5加密，每次加密后的密文其实都是一样的，这样就方便了MD5通过撞库的方式进行破解。</p>
 </blockquote>
-<h3 id="bcrypt生成的密文是60位的-而md5的是32位的"><a class="markdownIt-Anchor" href="#bcrypt生成的密文是60位的-而md5的是32位的"></a> Bcrypt生成的密文是60位的。而MD5的是32位的。</h3>
+<h3 id="Bcrypt%E7%94%9F%E6%88%90%E7%9A%84%E5%AF%86%E6%96%87%E6%98%AF60%E4%BD%8D%E7%9A%84%E3%80%82%E8%80%8CMD5%E7%9A%84%E6%98%AF32%E4%BD%8D%E7%9A%84%E3%80%82">Bcrypt生成的密文是60位的。而MD5的是32位的。</h3>
 <blockquote>
 <p>举个例子看看：首先这里我使用的maven引入的坐标是【spring-security】的引用</p>
 </blockquote>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--spring-security依赖包--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="我们编写测试类案例"><a class="markdownIt-Anchor" href="#我们编写测试类案例"></a> 我们编写测试类案例</h3>
+<h3 id="%E6%88%91%E4%BB%AC%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E7%B1%BB%E6%A1%88%E4%BE%8B">我们编写测试类案例</h3>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lyc</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2018-08-07</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CeShi</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="comment">//用户密码</span></span><br><span class="line">        String password = <span class="string">"123456"</span>;</span><br><span class="line">        <span class="comment">//密码加密</span></span><br><span class="line">        BCryptPasswordEncoder passwordEncoder=<span class="keyword">new</span> BCryptPasswordEncoder();</span><br><span class="line">        String newPassword = passwordEncoder.encode(password);<span class="comment">//加密</span></span><br><span class="line">        System.out.println(<span class="string">"加密密码为："</span>+newPassword);</span><br><span class="line">        <span class="comment">//对比这两个密码是否是同一个密码 </span></span><br><span class="line">        <span class="comment">// true 两个密码一致 false反之</span></span><br><span class="line">        <span class="keyword">boolean</span> matches = passwordEncoder.matches(password, newPassword);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>我们得到的结果是:</p>
@@ -180,8 +180,8 @@
 <p>我们再运行一遍查看打印结果：</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">加密密码为：$2a$10$kvc3uoQQDkfxTr3RuVpMJeBd7NZbPMMbma11hp1c68Kseioaqe4U.</span><br><span class="line">两个密码是否一致true</span><br></pre></td></tr></table></figure>
-<h3 id="发现多次加密后的密码都是不一样的这样我任你怎么撞库也难破解我的密码了"><a class="markdownIt-Anchor" href="#发现多次加密后的密码都是不一样的这样我任你怎么撞库也难破解我的密码了"></a> 发现多次加密后的密码都是不一样的，这样我任你怎么撞库也难破解我的密码了。</h3>
-
+<h3 id="%E5%8F%91%E7%8E%B0%E5%A4%9A%E6%AC%A1%E5%8A%A0%E5%AF%86%E5%90%8E%E7%9A%84%E5%AF%86%E7%A0%81%E9%83%BD%E6%98%AF%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84%EF%BC%8C%E8%BF%99%E6%A0%B7%E6%88%91%E4%BB%BB%E4%BD%A0%E6%80%8E%E4%B9%88%E6%92%9E%E5%BA%93%E4%B9%9F%E9%9A%BE%E7%A0%B4%E8%A7%A3%E6%88%91%E7%9A%84%E5%AF%86%E7%A0%81%E4%BA%86%E3%80%82">发现多次加密后的密码都是不一样的，这样我任你怎么撞库也难破解我的密码了。</h3>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
         </div>
 
         <!--隐藏-->
@@ -219,8 +219,8 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <p class="copyright text-muted">
-          文章总计:<a target="_blank" href>33</a>
-          分类总计:<a target="_blank" href>32</a>
+          文章总计:<a target="_blank" href>34</a>
+          分类总计:<a target="_blank" href>33</a>
           标签总计:<a target="_blank" href>48</a>
         </p>
         <p class="copyright text-muted">
