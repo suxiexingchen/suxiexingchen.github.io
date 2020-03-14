@@ -8,15 +8,15 @@
   <meta name="description" content>
   <meta name="author" content="馒头花卷儿">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="maven简便方法跳过打包检查[No.031]">
+  <meta property="og:title" content="为什么postman调接口不会跨域而浏览器会[No.035]">
   <meta property="og:description" content="技术栈 技术积累 经验总结">
   <meta property="og:site_name" content="素写星辰">
   <meta property="og:type" content="article">
   <meta property="og:image" content="suxiexingchen.github.io">
   <!--SEO-->
   <meta name="baidu-site-verification" content="R8XGxDTr9U">
-  <meta name="keywords" content="maven简便方法跳过打包检查[No.031]">
-  <meta name="description" content="maven简便方法跳过打包检查[No.031] <p>摘要：我们在使用maven打包，正式环境一般使用的是内网数据库，所以按照原来的打包检测就是行不通的，因为你在本地是连接不上内网的。这里给出一个超简便的方法。</p>">
+  <meta name="keywords" content="为什么postman调接口不会跨域而浏览器会[No.035]">
+  <meta name="description" content="为什么postman调接口不会跨域而浏览器会[No.035] <p>摘要：为什么postman调接口不会跨域而浏览器会？</p>">
   <meta name="author" content="馒头花卷儿">
   
     <link rel="alternate" href="/atom.xml" title="素写星辰" type="application/atom+xml">
@@ -57,7 +57,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">maven简便方法跳过打包检查[No.031]</p>
+          <p class="title">为什么postman调接口不会跨域而浏览器会[No.035]</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -129,27 +129,13 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2019-12-19</span>
-            <span class="time">14:47:05</span>
+            <span class="date">2020-03-13</span>
+            <span class="time">14:47:06</span>
           </span>
-          
-          <!--  Categories  -->
-            <span class="categories info">Under: 
-
-<a href="/categories/maven/">maven</a> / <a href="/categories/maven/打包/">打包</a>
-</span>
           
         </div>
 
         <!-- Tags -->
-        
-          <div class="post-tags text-muted">
-            Tags: 
-
-<a class="tag" href="/tags/打包/">#打包</a> <a class="tag" href="/tags/maven/">#maven</a>
-
-
-          </div>
         
 
         <!-- 不蒜子 -->
@@ -159,15 +145,18 @@
 
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>摘要：我们在使用maven打包，正式环境一般使用的是内网数据库，所以按照原来的打包检测就是行不通的，因为你在本地是连接不上内网的。这里给出一个超简便的方法。</p>
+          <p>摘要：为什么postman调接口不会跨域而浏览器会？</p>
 <a id="more"></a>
-<h3 id="方法一也是网上最普遍的方法重写一个插件的配置"><a class="markdownIt-Anchor" href="#方法一也是网上最普遍的方法重写一个插件的配置"></a> 方法一：也是网上最普遍的方法，重写一个插件的配置</h3>
 <blockquote>
-<p>在你的pom文件中的 <build><plugins><plugin></plugin></plugins></build>中添加上</p>
+<p>都在说跨域，为什么postman能访问接口，而浏览器就不行呢？这里需要理解什么是跨域，跨域是指的当前资源访问其他资源时发起的http请求由于安全原因（由于同源策略，域名、协议。端口中只要有一个不同就不同源），浏览器限制了这些请求的正常访问，特别需要注意的是这些发生在浏览器中。而通过postman等工具调用接口时，只是简单的访问一个资源，并不存在资源的相互访问。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">    &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;</span><br><span class="line">    &lt;configuration&gt;</span><br><span class="line">        &lt;skip&gt;true&lt;/skip&gt;</span><br><span class="line">    &lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="方法二其实这里只杀改变了skip的值那么我们换个更简单的方法"><a class="markdownIt-Anchor" href="#方法二其实这里只杀改变了skip的值那么我们换个更简单的方法"></a> 方法二：其实这里只杀改变了skip的值，那么我们换个更简单的方法</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;properties&gt;</span><br><span class="line">    &lt;skipTests&gt;true&lt;/skipTests&gt;&lt;!--跳过打包验证--&gt;</span><br><span class="line">&lt;/properties&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>出于安全原因，浏览器禁止Ajax调用驻留在当前原点之外的资源。例如，当你在一个标签中检查你的银行账户时，你可以在另一个选项卡上拥有EVILL网站。来自EVILL的脚本不能够对你的银行API做出Ajax请求（从你的帐户中取出钱！）使用您的凭据。<br>
+跨源资源共享（CORS）是由大多数浏览器实现的W3C规范，允许您灵活地指定什么样的跨域请求被授权，而不是使用一些不太安全和不太强大的策略，如IFRAME或JSONP。</p>
+</blockquote>
+<h3 id="这里我引用一下其他作者的写作"><a class="markdownIt-Anchor" href="#这里我引用一下其他作者的写作"></a> 这里我引用一下其他作者的写作</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">回调函数</span><br><span class="line"></span><br><span class="line">    这里就不细讲回调函数啦，相信各位都能理解，用一个案例来说一下。</span><br><span class="line">    “服务器”和“客户端”初次相识，相谈甚欢，客户端希望服务器把一个叫json的东西给它，”服务器“：你先忙着，我弄好了发给你，把你电话号码（回调函数）给我。</span><br><span class="line"></span><br><span class="line">跨域中的预检请求即是指浏览器在真正发送请求前，会先发送一个Options请求嗅探，请求成功后才会发送真实的请求。问答三连：</span><br><span class="line"></span><br><span class="line">    为什么需要发送预检请求？是因为触发了浏览器的安全校验。</span><br><span class="line">    为什么请求会触发安全校验？因为当前请求是一个&quot;复杂请求&quot;。</span><br><span class="line">    为什么我的请求是“复杂的”?见下面解释</span><br><span class="line"></span><br><span class="line">复杂和简单请求</span><br><span class="line"></span><br><span class="line">    简单请求：请求方法是GET/HEAD/POST，并且contentType为text/plain、application/x-www-form-urlencoded、multipart/form-data。</span><br><span class="line">    不满足上述条件的视为复杂请求，开发中我们常触发这个条件大多因为我们的请求的contentType设置的是application/json导致的。</span><br><span class="line">    简单请求如果设置了Authentication认证header也会让请求“升级”为复杂请求。</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「独行侠梦」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/u012811805/article/details/84900395</span><br></pre></td></tr></table></figure>
+<p><img src="-watermark1" alt="图片引用"></p>
 
         </div>
 
