@@ -130,7 +130,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-11-07</span>
-            <span class="time">11:29:53</span>
+            <span class="time">11:36:09</span>
           </span>
           
           <!--  Categories  -->
@@ -169,7 +169,7 @@
 <blockquote>
 <p>这个注解其实是帮你的类提供了getXxx()、setXxx()方法、equals()、hashCode()、toString() 这些方法。也就是说只要你的类上写了这个注解，那就不需要再生成get、set、toString等方法了。</p>
 </blockquote>
-<h3 id="当你用上了这个注解后然后创建了实例调用他的get或者set方法时你会发现代码上报错-这是因为你还没安装lombok这个插件-下面介绍如何在idea上进行安装"><a class="markdownIt-Anchor" href="#当你用上了这个注解后然后创建了实例调用他的get或者set方法时你会发现代码上报错-这是因为你还没安装lombok这个插件-下面介绍如何在idea上进行安装"></a> 当你用上了这个注解后，然后创建了实例，调用他的get或者set方法时，你会发现代码上报错。这是因为你还没安装lombok这个插件。下面介绍如何在IDEA上进行安装：</h3>
+<h3 id="%E5%BD%93%E4%BD%A0%E7%94%A8%E4%B8%8A%E4%BA%86%E8%BF%99%E4%B8%AA%E6%B3%A8%E8%A7%A3%E5%90%8E%EF%BC%8C%E7%84%B6%E5%90%8E%E5%88%9B%E5%BB%BA%E4%BA%86%E5%AE%9E%E4%BE%8B%EF%BC%8C%E8%B0%83%E7%94%A8%E4%BB%96%E7%9A%84get%E6%88%96%E8%80%85set%E6%96%B9%E6%B3%95%E6%97%B6%EF%BC%8C%E4%BD%A0%E4%BC%9A%E5%8F%91%E7%8E%B0%E4%BB%A3%E7%A0%81%E4%B8%8A%E6%8A%A5%E9%94%99%E3%80%82%E8%BF%99%E6%98%AF%E5%9B%A0%E4%B8%BA%E4%BD%A0%E8%BF%98%E6%B2%A1%E5%AE%89%E8%A3%85lombok%E8%BF%99%E4%B8%AA%E6%8F%92%E4%BB%B6%E3%80%82%E4%B8%8B%E9%9D%A2%E4%BB%8B%E7%BB%8D%E5%A6%82%E4%BD%95%E5%9C%A8IDEA%E4%B8%8A%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85%EF%BC%9A">当你用上了这个注解后，然后创建了实例，调用他的get或者set方法时，你会发现代码上报错。这是因为你还没安装lombok这个插件。下面介绍如何在IDEA上进行安装：</h3>
 <blockquote>
 <p>首先点开File下的Settings，然后点Plugins，然后点击右边的marketplace（市场），然后在搜索框内搜索lombok，然后有个【install】按钮进行安装，安装完后重启下IDEA就完成了安装，你的报错也没了。<br>
 <img src="http://qiniu.zuoyoush.com/img/idea/plugins/%E5%AE%89%E8%A3%85lombok1.png-watermark1" alt="图片引用"><br>
@@ -177,7 +177,7 @@
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AllArgsConstructor</span>  加在类上，可以生成含实体类全参数的构造方法。</span><br><span class="line"></span><br><span class="line"><span class="meta">@NoArgsConstructor</span>  加在类上，可以生成无参构造方法。</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span>  加在类上，配合<span class="meta">@NonNull</span>注解使用，生成指定参数的构造方法。比如在age属性前面加<span class="meta">@NonNull</span>注解，则User生成需要age参数的构造方法。</span><br><span class="line"></span><br><span class="line"><span class="meta">@Getter</span>  加在类上，可以生成实体类所有属性的getter方法。</span><br><span class="line"></span><br><span class="line"><span class="meta">@Setter</span>  加在类上，可以生成实体类所有属性的setter方法。</span><br><span class="line"></span><br><span class="line"><span class="meta">@ToString</span>  加在类上，调用toString()方法，可以输出实体类中所有属性的值。</span><br></pre></td></tr></table></figure>
 <p><img src alt="图片引用"></p>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
         </div>
 
         <!--隐藏-->
