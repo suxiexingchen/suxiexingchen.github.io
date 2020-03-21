@@ -130,7 +130,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-12-19</span>
-            <span class="time">14:38:09</span>
+            <span class="time">11:24:07</span>
           </span>
           
           <!--  Categories  -->
@@ -161,14 +161,14 @@
         <div class="post-content">
           <p>摘要：我们在使用maven打包，正式环境一般使用的是内网数据库，所以按照原来的打包检测就是行不通的，因为你在本地是连接不上内网的。这里给出一个超简便的方法。</p>
 <a id="more"></a>
-<h3 id="%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E4%B9%9F%E6%98%AF%E7%BD%91%E4%B8%8A%E6%9C%80%E6%99%AE%E9%81%8D%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E9%87%8D%E5%86%99%E4%B8%80%E4%B8%AA%E6%8F%92%E4%BB%B6%E7%9A%84%E9%85%8D%E7%BD%AE">方法一：也是网上最普遍的方法，重写一个插件的配置</h3>
+<h3 id="方法一也是网上最普遍的方法重写一个插件的配置"><a class="markdownIt-Anchor" href="#方法一也是网上最普遍的方法重写一个插件的配置"></a> 方法一：也是网上最普遍的方法，重写一个插件的配置</h3>
 <blockquote>
 <p>在你的pom文件中的 <build><plugins><plugin></plugin></plugins></build>中添加上</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">    &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;</span><br><span class="line">    &lt;configuration&gt;</span><br><span class="line">        &lt;skip&gt;true&lt;/skip&gt;</span><br><span class="line">    &lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%85%B6%E5%AE%9E%E8%BF%99%E9%87%8C%E5%8F%AA%E6%9D%80%E6%94%B9%E5%8F%98%E4%BA%86skip%E7%9A%84%E5%80%BC%EF%BC%8C%E9%82%A3%E4%B9%88%E6%88%91%E4%BB%AC%E6%8D%A2%E4%B8%AA%E6%9B%B4%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%B9%E6%B3%95">方法二：其实这里只杀改变了skip的值，那么我们换个更简单的方法</h3>
+<h3 id="方法二其实这里只杀改变了skip的值那么我们换个更简单的方法"><a class="markdownIt-Anchor" href="#方法二其实这里只杀改变了skip的值那么我们换个更简单的方法"></a> 方法二：其实这里只杀改变了skip的值，那么我们换个更简单的方法</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;properties&gt;</span><br><span class="line">    &lt;skipTests&gt;true&lt;/skipTests&gt;&lt;!--跳过打包验证--&gt;</span><br><span class="line">&lt;/properties&gt;</span><br></pre></td></tr></table></figure>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+
         </div>
 
         <!--隐藏-->
@@ -206,7 +206,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <p class="copyright text-muted">
-          文章总计:<a target="_blank" href>37</a>
+          文章总计:<a target="_blank" href>38</a>
           分类总计:<a target="_blank" href>38</a>
           标签总计:<a target="_blank" href>55</a>
         </p>

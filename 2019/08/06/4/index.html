@@ -130,7 +130,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-08-06</span>
-            <span class="time">14:38:09</span>
+            <span class="time">11:24:07</span>
           </span>
           
           <!--  Categories  -->
@@ -146,7 +146,7 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/SpringBoot/">#SpringBoot</a> <a class="tag" href="/tags/java/">#java</a> <a class="tag" href="/tags/JPA/">#JPA</a> <a class="tag" href="/tags/异常解决/">#异常解决</a>
+<a class="tag" href="/tags/java/">#java</a> <a class="tag" href="/tags/SpringBoot/">#SpringBoot</a> <a class="tag" href="/tags/JPA/">#JPA</a> <a class="tag" href="/tags/异常解决/">#异常解决</a>
 
 
           </div>
@@ -165,20 +165,20 @@
 <p>例如我数据库中有一个主键id的字段,本应该设计为【object_id】,可是去给设计成了【objectId】</p>
 </blockquote>
 <p>一：在使用JPA时就会发生异常，其实就是因为命名不规范引起的</p>
-<h3 id="%E8%BF%99%E6%98%AF%E5%AE%9E%E4%BD%93%E7%9A%84%E6%98%A0%E5%B0%84%E7%B1%BB">这是实体的映射类</h3>
+<h3 id="这是实体的映射类"><a class="markdownIt-Anchor" href="#这是实体的映射类"></a> 这是实体的映射类</h3>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name = <span class="string">"user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"objectId"</span>, length = <span class="number">32</span>)</span><br><span class="line">    <span class="keyword">private</span> String objectId;</span><br></pre></td></tr></table></figure>
-<h2 id="%E9%A6%96%E5%85%88%E6%88%91%E5%BC%BA%E8%B0%83%EF%BC%8C%E4%BD%A0%E8%A6%81%E7%A1%AE%E4%BF%9D%E4%BD%A0%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E5%AD%97%E6%AE%B5%E5%92%8Ccolum%E4%B8%80%E8%87%B4%EF%BC%8C%E5%B9%B6%E4%B8%94%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E6%8D%A2%E8%A1%8C%2C%E7%A9%BA%E6%A0%BC%E8%BF%99%E7%A7%8D%E4%BD%8E%E7%BA%A7%E9%94%99%E8%AF%AF%E3%80%82">首先我强调，你要确保你的数据库中的字段和colum一致，并且没有什么换行,空格这种低级错误。</h2>
-<h3 id="%E7%84%B6%E5%90%8E%E6%88%91%E4%BB%AC%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3%E5%90%8E%E5%8F%91%E7%8E%B0%E4%BC%9A%E6%8A%A5%E5%A6%82%E4%B8%8B%E9%94%99%E8%AF%AF">然后我们调用接口后发现会报如下错误</h3>
+<h2 id="首先我强调你要确保你的数据库中的字段和colum一致并且没有什么换行空格这种低级错误"><a class="markdownIt-Anchor" href="#首先我强调你要确保你的数据库中的字段和colum一致并且没有什么换行空格这种低级错误"></a> 首先我强调，你要确保你的数据库中的字段和colum一致，并且没有什么换行,空格这种低级错误。</h2>
+<h3 id="然后我们调用接口后发现会报如下错误"><a class="markdownIt-Anchor" href="#然后我们调用接口后发现会报如下错误"></a> 然后我们调用接口后发现会报如下错误</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unknown column &apos;user0_.object_id&apos; in &apos;field list&apos;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>你确认你的字段正确，没有换行,空格导致的错误的话，这里的原因只有一个：</p>
 </blockquote>
-<h2 id="%E9%82%A3%E5%B0%B1%E6%98%AF%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%EF%BC%8C%E5%8D%B3%E4%BD%BF%E4%BD%A0%E6%8C%87%E5%AE%9A%40Column%E7%9A%84name%E4%B9%9F%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8">那就是驼峰命名，即使你指定@Column的name也不起作用</h2>
-<h3 id="%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95">解决办法</h3>
+<h2 id="那就是驼峰命名即使你指定column的name也不起作用"><a class="markdownIt-Anchor" href="#那就是驼峰命名即使你指定column的name也不起作用"></a> 那就是驼峰命名，即使你指定@Column的name也不起作用</h2>
+<h3 id="解决办法"><a class="markdownIt-Anchor" href="#解决办法"></a> 解决办法</h3>
 <p>在application.properties添加jpa属性：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl</span><br><span class="line">spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl</span><br></pre></td></tr></table></figure>
-<h3 id="%E9%97%AE%E9%A2%98%E4%BA%A7%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0%E5%B0%B1%E6%98%AF%E5%9B%A0%E4%B8%BAJPA%E4%BC%9A%E8%87%AA%E5%8A%A8%E7%9A%84%E6%8C%89%E7%85%A7%E7%BA%A6%E5%AE%9A%E5%8E%BB%E8%BF%9B%E8%A1%8C%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%AF%BC%E8%87%B4%E8%AE%BE%E8%AE%A1%E4%B8%8D%E8%A7%84%E8%8C%83%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%AD%97%E6%AE%B5%E6%98%A0%E5%B0%84%E6%80%BB%E6%98%AF%E9%94%99%E8%AF%AF%E3%80%82">问题产生的原因就是因为JPA会自动的按照约定去进行驼峰命名，这样导致设计不规范的数据库表字段映射总是错误。</h3>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+<h3 id="问题产生的原因就是因为jpa会自动的按照约定去进行驼峰命名这样导致设计不规范的数据库表字段映射总是错误"><a class="markdownIt-Anchor" href="#问题产生的原因就是因为jpa会自动的按照约定去进行驼峰命名这样导致设计不规范的数据库表字段映射总是错误"></a> 问题产生的原因就是因为JPA会自动的按照约定去进行驼峰命名，这样导致设计不规范的数据库表字段映射总是错误。</h3>
+
         </div>
 
         <!--隐藏-->
@@ -216,7 +216,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <p class="copyright text-muted">
-          文章总计:<a target="_blank" href>37</a>
+          文章总计:<a target="_blank" href>38</a>
           分类总计:<a target="_blank" href>38</a>
           标签总计:<a target="_blank" href>55</a>
         </p>

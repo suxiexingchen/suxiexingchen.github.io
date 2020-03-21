@@ -130,7 +130,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-10-23</span>
-            <span class="time">14:38:09</span>
+            <span class="time">11:24:07</span>
           </span>
           
           <!--  Categories  -->
@@ -161,7 +161,7 @@
         <div class="post-content">
           <p>摘要：这里因为要在云服务器上布置mysql 5.7所以记录过程，希望能有所帮助。</p>
 <a id="more"></a>
-<h3 id="1.%E6%9F%A5%E7%9C%8B%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%88%E6%9C%AC%E7%9A%84mysql%EF%BC%8C%E8%BF%87%E7%A8%8B%E5%A6%82%E4%B8%8B">1.查看有哪些版本的mysql，过程如下</h3>
+<h3 id="1查看有哪些版本的mysql过程如下"><a class="markdownIt-Anchor" href="#1查看有哪些版本的mysql过程如下"></a> 1.查看有哪些版本的mysql，过程如下</h3>
 <blockquote>
 <p>yum repolist all | grep mysql</p>
 </blockquote>
@@ -169,22 +169,22 @@
 <blockquote>
 <p>输入命令后我们发现没有动静啊，这是因为现在centos上默认是没有yum源的，yum安装的是 MariaDB。所以我们需要自己先配置yum源。</p>
 </blockquote>
-<h3 id="2.%E4%B8%8B%E8%BD%BDyum%E6%BA%90%EF%BC%8C%E8%BF%87%E7%A8%8B%E5%A6%82%E4%B8%8B">2.下载yum源，过程如下</h3>
+<h3 id="2下载yum源过程如下"><a class="markdownIt-Anchor" href="#2下载yum源过程如下"></a> 2.下载yum源，过程如下</h3>
 <blockquote>
 <p>wget ‘<a href="https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm" target="_blank" rel="noopener">https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm</a>’</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ4qq76j5p04zsZ ~]# wget &apos;https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm&apos;</span><br><span class="line">--2019-10-23 15:29:41--  https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm</span><br><span class="line">Resolving dev.mysql.com (dev.mysql.com)... 137.254.60.11</span><br><span class="line">Connecting to dev.mysql.com (dev.mysql.com)|137.254.60.11|:443... connected.</span><br><span class="line">HTTP request sent, awaiting response... 302 Found</span><br><span class="line">Location: https://repo.mysql.com//mysql57-community-release-el7-11.noarch.rpm [following]</span><br><span class="line">--2019-10-23 15:29:43--  https://repo.mysql.com//mysql57-community-release-el7-11.noarch.rpm</span><br><span class="line">Resolving repo.mysql.com (repo.mysql.com)... 23.1.245.43</span><br><span class="line">Connecting to repo.mysql.com (repo.mysql.com)|23.1.245.43|:443... connected.</span><br><span class="line">HTTP request sent, awaiting response... 200 OK</span><br><span class="line">Length: 25680 (25K) [application/x-redhat-package-manager]</span><br><span class="line">Saving to: ‘mysql57-community-release-el7-11.noarch.rpm’</span><br><span class="line"></span><br><span class="line">100%[=====================================================================================================&gt;] 25,680      --.-K/s   in 0.1s    </span><br><span class="line"></span><br><span class="line">2019-10-23 15:29:44 (203 KB/s) - ‘mysql57-community-release-el7-11.noarch.rpm’ saved [25680/25680]</span><br><span class="line"></span><br><span class="line">[root@iZ4qq76j5p04zsZ ~]#</span><br></pre></td></tr></table></figure>
-<h3 id="3%E5%AE%89%E8%A3%85yum%E6%BA%90%EF%BC%8C%E8%BF%87%E7%A8%8B%E5%A6%82%E4%B8%8B">3安装yum源，过程如下</h3>
+<h3 id="3安装yum源过程如下"><a class="markdownIt-Anchor" href="#3安装yum源过程如下"></a> 3安装yum源，过程如下</h3>
 <blockquote>
 <p>rpm -Uvh mysql57-community-release-el7-11.noarch.rpm</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ4qq76j5p04zsZ ~]# rpm -Uvh mysql57-community-release-el7-11.noarch.rpm</span><br><span class="line">warning: mysql57-community-release-el7-11.noarch.rpm: Header V3 DSA/SHA1 Signature, key ID 5072e1f5: NOKEY</span><br><span class="line">Preparing...                          ################################# [100%]</span><br><span class="line">Updating / installing...</span><br><span class="line">   1:mysql57-community-release-el7-11 ################################# [100%]</span><br><span class="line">[root@iZ4qq76j5p04zsZ ~]#</span><br></pre></td></tr></table></figure>
-<h3 id="4.%E5%86%8D%E6%9D%A5%E6%9F%A5%E7%9C%8B%E7%8E%B0%E5%9C%A8%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%88%E6%9C%AC%E7%9A%84mysql%2C%E8%BF%87%E7%A8%8B%E5%A6%82%E4%B8%8B">4.再来查看现在有哪些版本的mysql,过程如下</h3>
+<h3 id="4再来查看现在有哪些版本的mysql过程如下"><a class="markdownIt-Anchor" href="#4再来查看现在有哪些版本的mysql过程如下"></a> 4.再来查看现在有哪些版本的mysql,过程如下</h3>
 <blockquote>
 <p>yum repolist all | grep mysql</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ4qq76j5p04zsZ ~]# yum repolist all | grep mysql</span><br><span class="line">mysql-cluster-7.5-community/x86_64 MySQL Cluster 7.5 Community   disabled</span><br><span class="line">mysql-cluster-7.5-community-source MySQL Cluster 7.5 Community - disabled</span><br><span class="line">mysql-cluster-7.6-community/x86_64 MySQL Cluster 7.6 Community   disabled</span><br><span class="line">mysql-cluster-7.6-community-source MySQL Cluster 7.6 Community - disabled</span><br><span class="line">mysql-connectors-community/x86_64  MySQL Connectors Community    enabled:    128</span><br><span class="line">mysql-connectors-community-source  MySQL Connectors Community -  disabled</span><br><span class="line">mysql-tools-community/x86_64       MySQL Tools Community         enabled:    100</span><br><span class="line">mysql-tools-community-source       MySQL Tools Community - Sourc disabled</span><br><span class="line">mysql-tools-preview/x86_64         MySQL Tools Preview           disabled</span><br><span class="line">mysql-tools-preview-source         MySQL Tools Preview - Source  disabled</span><br><span class="line">mysql55-community/x86_64           MySQL 5.5 Community Server    disabled</span><br><span class="line">mysql55-community-source           MySQL 5.5 Community Server -  disabled</span><br><span class="line">mysql56-community/x86_64           MySQL 5.6 Community Server    disabled</span><br><span class="line">mysql56-community-source           MySQL 5.6 Community Server -  disabled</span><br><span class="line">mysql57-community/x86_64           MySQL 5.7 Community Server    enabled:    384</span><br><span class="line">mysql57-community-source           MySQL 5.7 Community Server -  disabled</span><br><span class="line">mysql80-community/x86_64           MySQL 8.0 Community Server    disabled</span><br><span class="line">mysql80-community-source           MySQL 8.0 Community Server -  disabled</span><br></pre></td></tr></table></figure>
-<h3 id="5.%E5%AE%89%E8%A3%85mysql%205.7%2C%E8%BF%99%E9%87%8C%E4%BD%A0%E4%BC%9A%E5%8F%91%E7%8E%B0%E6%AD%A5%E9%AA%A44%E4%B8%AD%E7%9A%84128%EF%BC%8C100%2C384%E5%88%86%E5%88%AB%E5%AF%B9%E5%BA%94%E7%9A%84%E5%87%A0%E8%A1%8C%E5%AF%B9%E5%BA%94%E7%9A%84%E6%98%AF%E3%80%90enabled%E3%80%91%EF%BC%8C%E5%B0%B1%E6%98%AF%E7%8E%B0%E5%9C%A8%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF%E3%80%82%E8%BF%99%E9%87%8C%E5%A6%82%E6%9E%9C%E5%B8%A6%E5%AE%BD%E5%B0%8F%E7%9A%84%E8%AF%9D%EF%BC%8C%E4%BC%9A%E5%BE%88%E6%85%A2%E3%80%82">5.安装mysql 5.7,这里你会发现步骤4中的128，100,384分别对应的几行对应的是【enabled】，就是现在要安装的版本信息。这里如果带宽小的话，会很慢。</h3>
+<h3 id="5安装mysql-57这里你会发现步骤4中的128100384分别对应的几行对应的是enabled就是现在要安装的版本信息-这里如果带宽小的话会很慢"><a class="markdownIt-Anchor" href="#5安装mysql-57这里你会发现步骤4中的128100384分别对应的几行对应的是enabled就是现在要安装的版本信息-这里如果带宽小的话会很慢"></a> 5.安装mysql 5.7,这里你会发现步骤4中的128，100,384分别对应的几行对应的是【enabled】，就是现在要安装的版本信息。这里如果带宽小的话，会很慢。</h3>
 <blockquote>
 <p>yum install -y mysql-community-server</p>
 </blockquote>
@@ -192,14 +192,14 @@
 <blockquote>
 <p>当你看到【Complete】你就已将安装完成了，到这里已经安装是完成了。但是我们不能到此为止啊，因为mysql还没启动呢！所以我决定继续</p>
 </blockquote>
-<h3 id="6.%E5%90%AF%E5%8A%A8mysql.">6.启动mysql.</h3>
+<h3 id="6启动mysql"><a class="markdownIt-Anchor" href="#6启动mysql"></a> 6.启动mysql.</h3>
 <blockquote>
 <p>在centos7中,没有了service命令，使用systemctl命令。特别注意:启动的时候是start mysqld而不是mysql。<br>
 启动：systemctl start mysqld</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ4qq76j5p04zsZ ~]# systemctl start mysqld</span><br><span class="line">[root@iZ4qq76j5p04zsZ ~]#</span><br></pre></td></tr></table></figure>
-<h4 id="%E4%BD%A0%E4%BC%9A%E5%8F%91%E7%8E%B0%E5%B9%B6%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8F%8D%E5%BA%94%E5%95%8A%EF%BC%8C%E6%88%91%E4%BB%AC%E7%BB%A7%E7%BB%AD">你会发现并没有什么反应啊，我们继续</h4>
-<h3 id="7.%E5%90%AF%E5%8A%A8%E5%90%8E%E6%9F%A5%E7%9C%8B%E7%8A%B6%E6%80%81">7.启动后查看状态</h3>
+<h4 id="你会发现并没有什么反应啊我们继续"><a class="markdownIt-Anchor" href="#你会发现并没有什么反应啊我们继续"></a> 你会发现并没有什么反应啊，我们继续</h4>
+<h3 id="7启动后查看状态"><a class="markdownIt-Anchor" href="#7启动后查看状态"></a> 7.启动后查看状态</h3>
 <blockquote>
 <p>查看状态：systemctl status mysqld</p>
 </blockquote>
@@ -207,7 +207,7 @@
 <p>这里【 Active: active (running) since Wed 2019-10-23 15:54:10 CST; 1min 23s ago】告诉你mysql已经在哎运行</p>
 <p>如图所示，是已经启动了</p>
 <p><img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E9%98%BF%E9%87%8C%E4%BA%91/mysql%E5%AE%89%E8%A3%85/mysql%E5%90%AF%E5%8A%A8.png-watermark1" alt="图片引用"></p>
-<h3 id="8.%E5%AF%BB%E6%89%BE%E7%99%BB%E5%BD%95%E5%AF%86%E7%A0%81">8.寻找登录密码</h3>
+<h3 id="8寻找登录密码"><a class="markdownIt-Anchor" href="#8寻找登录密码"></a> 8.寻找登录密码</h3>
 <blockquote>
 <p>mysql 5.7的新特性之一就是在初始化的时候会生成一个自定义的密码，然后咱们需要找到这个密码，登录的时候需要输入。</p>
 </blockquote>
@@ -215,20 +215,20 @@
 <p>输入命令找到密码：【grep ‘temporary password’ /var/log/mysqld.log】</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ4qq76j5p04zsZ ~]# grep &apos;temporary password&apos; /var/log/mysqld.log</span><br><span class="line">2019-10-23T07:54:07.111254Z 1 [Note] A temporary password is generated for root@localhost: qoS:ziv&amp;+8_b</span><br><span class="line">[root@iZ4qq76j5p04zsZ ~]#</span><br></pre></td></tr></table></figure>
-<h4 id="%E8%BF%99%E9%87%8C%E7%9A%84%E3%80%90qoS%3Aziv%26%2B8_b%E3%80%91%E5%B0%B1%E6%98%AF%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E7%9A%84%E5%AF%86%E7%A0%81%E3%80%82">这里的【qoS:ziv&amp;+8_b】就是你需要使用的密码。</h4>
-<h3 id="9.%E6%88%90%E5%8A%9F%E7%99%BB%E5%BD%95">9.成功登录</h3>
+<h4 id="这里的qosziv8_b就是你需要使用的密码"><a class="markdownIt-Anchor" href="#这里的qosziv8_b就是你需要使用的密码"></a> 这里的【qoS:ziv&amp;+8_b】就是你需要使用的密码。</h4>
+<h3 id="9成功登录"><a class="markdownIt-Anchor" href="#9成功登录"></a> 9.成功登录</h3>
 <blockquote>
 <p>【mysql -uroot -p】这里的root是你账户名称最高权限，需要注意，输入密码的时候是不显示的，所以你只管输入不要以为没反应。这里我建议你直接复制密码并粘贴，不要在那输入（错误率很高）。</p>
 </blockquote>
 <p>我们已经成功登录</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ4qq76j5p04zsZ ~]# mysql -uroot -p</span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 3</span><br><span class="line">Server version: 5.7.28</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="10.%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E7%A0%81">10.修改数据库密码</h3>
+<h3 id="10修改数据库密码"><a class="markdownIt-Anchor" href="#10修改数据库密码"></a> 10.修改数据库密码</h3>
 <blockquote>
 <p>注意，修改的密码不能简单。需要包含把大小写字母和数字。然后切记切记，mysql里面的命令要加分号！分号！分号！<br>
 SET PASSWORD = PASSWORD(‘Admin123!’);【括号里的字符就是你要设置的密码】</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SET PASSWORD = PASSWORD(&apos;Admin123!&apos;);</span><br><span class="line">Query OK, 0 rows affected, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
-<h3 id="11.%E8%AE%BE%E7%BD%AE%E8%BF%9C%E7%A8%8B%E5%8F%AF%E4%BB%A5%E7%99%BB%E5%BD%95">11.设置远程可以登录</h3>
+<h3 id="11设置远程可以登录"><a class="markdownIt-Anchor" href="#11设置远程可以登录"></a> 11.设置远程可以登录</h3>
 <blockquote>
 <p>默认是无法在使用工具登录访问的（无论是本地还是远程），现在要设置两个，一是将云服务器上的3306端口开放；另一个是配置远程可以访问。</p>
 </blockquote>
@@ -241,14 +241,14 @@ SET PASSWORD = PASSWORD(‘Admin123!’);【括号里的字符就是你要设置
 <p>11.2使用flush命令使配置立即生效。【flush privileges;】</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; flush privileges;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
-<h3 id="12.%E8%BF%99%E9%87%8C%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B0%B1%E6%98%AF11%E4%B8%AD%E6%8F%90%E5%88%B0%E7%9A%84%E5%BC%80%E6%94%BE%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%843306%E7%AB%AF%E5%8F%A3%E3%80%82">12.这里还有一个问题，就是11中提到的开放云服务器的3306端口。</h3>
+<h3 id="12这里还有一个问题就是11中提到的开放云服务器的3306端口"><a class="markdownIt-Anchor" href="#12这里还有一个问题就是11中提到的开放云服务器的3306端口"></a> 12.这里还有一个问题，就是11中提到的开放云服务器的3306端口。</h3>
 <blockquote>
 <p>这里就以阿里云为例子，百度和腾讯好像不需要配置（如果需要的话也请配置）。</p>
 </blockquote>
 <p>点击【实例】–&gt;【更多】–&gt;【网络和安全组】–&gt;【安全组配置】–&gt;【配置规则】–&gt;【添加安全组规则】–&gt;【如图配置】<br>
 最后点击确定你就可以远程访问你的数据库了。</p>
 <p><img src="http://qiniu.zuoyoush.com/img/%E4%BA%91%E6%9C%8D%E5%8A%A1/%E9%98%BF%E9%87%8C%E4%BA%91/mysql%E5%AE%89%E8%A3%85/%E5%AE%89%E5%85%A8%E7%BB%84%E6%B7%BB%E5%8A%A0.png-watermark1" alt="图片引用"></p>
-<h3 id="%E6%9C%80%E5%90%8E%E5%86%8D%E9%99%84%E4%B8%8A%E4%B8%80%E4%BA%9B%E5%BA%94%E8%AF%A5%E4%BC%9A%E7%94%A8%E5%88%B0%E7%9A%84%E5%91%BD%E4%BB%A4">最后再附上一些应该会用到的命令</h3>
+<h3 id="最后再附上一些应该会用到的命令"><a class="markdownIt-Anchor" href="#最后再附上一些应该会用到的命令"></a> 最后再附上一些应该会用到的命令</h3>
 <p>先输入exit退出数据库客户端。打开配置文件，yum安装的默认在/etc文件夹下:</p>
 <blockquote>
 <p>vim /etc/my.cnf</p>
@@ -285,7 +285,7 @@ systemctl restart mysqld</p>
 <p>systemctl enable mysqld<br>
 systemctl daemon-reload</p>
 </blockquote>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+
         </div>
 
         <!--隐藏-->
@@ -323,7 +323,7 @@ systemctl daemon-reload</p>
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <p class="copyright text-muted">
-          文章总计:<a target="_blank" href>37</a>
+          文章总计:<a target="_blank" href>38</a>
           分类总计:<a target="_blank" href>38</a>
           标签总计:<a target="_blank" href>55</a>
         </p>
