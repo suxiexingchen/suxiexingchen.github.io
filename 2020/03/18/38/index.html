@@ -130,7 +130,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2020-03-18</span>
-            <span class="time">11:36:09</span>
+            <span class="time">15:07:40</span>
           </span>
           
           <!--  Categories  -->
@@ -164,7 +164,7 @@
 <p>ab 是apachebench的缩写。</p>
 <p>ab命令会创建多个并发访问线程，模拟多个访问者同时对某一URL地址进行访问。它的测试目标是基于URL的，因此，它既可以用来测试apache的负载压力，也可以测试nginx、lighthttp、tomcat、IIS等其它Web服务器的压力。</p>
 <p>ab命令对发出负载的计算机要求很低，它既不会占用很高CPU，也不会占用很多内存。但却会给目标服务器造成巨大的负载，其原理类似CC攻击。自己测试使用也需要注意，否则一次上太多的负载。可能造成目标服务器资源耗完，严重时甚至导致死机。</p>
-<h3 id="%E4%B8%80%EF%BC%9A%E5%AE%89%E8%A3%85">一：安装</h3>
+<h3 id="一安装"><a class="markdownIt-Anchor" href="#一安装"></a> 一：安装</h3>
 <blockquote>
 <p>1）打开网址下载：<a href="http://httpd.apache.org/download.cgi" target="_blank" rel="noopener">http://httpd.apache.org/download.cgi</a></p>
 </blockquote>
@@ -199,7 +199,7 @@
 （注意：要使用管理员权限打开命令行）<br>
 如图完成（我这里有个错误不必纠结，你前面的目录要保证存在就不会有错误）<br>
 <img src="http://qiniu.zuoyoush.com/img/Apacheab/%E5%AE%89%E8%A3%85apach_db_007.png-watermark1" alt="图片引用"></p>
-<h3 id="%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E3%80%81%E5%85%B3%E9%97%AD%3F">如何启动、关闭?</h3>
+<h3 id="如何启动-关闭"><a class="markdownIt-Anchor" href="#如何启动-关闭"></a> 如何启动、关闭?</h3>
 <p>【services.msc】</p>
 <blockquote>
 <p>找到apache2.4,可以在左侧点击重启、关闭；第二种可以使用命令启动：httpd.exe -k start<br>
@@ -207,7 +207,7 @@
 <img src="http://qiniu.zuoyoush.com/img/Apacheab/%E5%AE%89%E8%A3%85apach_db_009.png-watermark1" alt="图片引用"><br>
 第二种还是进入bin目录执行命令就好</p>
 </blockquote>
-<h3 id="%E4%BA%8C%EF%BC%9A%E6%B5%8B%E8%AF%95">二：测试</h3>
+<h3 id="二测试"><a class="markdownIt-Anchor" href="#二测试"></a> 二：测试</h3>
 <blockquote>
 <p>1）首先进入到apache27\bin的目录中<br>
 使用命令【ab】出现如下，可以看到参数的含义</p>
@@ -239,7 +239,7 @@
 <p>顺便把后端接收参数的代码也发出来吧</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(value = &quot;/add&quot;,method = RequestMethod.POST)</span><br><span class="line">    public Integer add(HttpServletRequest request)&#123;</span><br><span class="line"></span><br><span class="line">        String ceshi = request.getParameter(&quot;id&quot;);</span><br><span class="line">        String name = request.getParameter(&quot;name&quot;);</span><br><span class="line"></span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="%E5%A6%82%E6%9E%9C%E4%BD%A0%E5%88%9B%E5%BB%BApost.txt%E6%96%87%E4%BB%B6%E4%B8%8D%E5%9C%A8bin%E7%9B%AE%E5%BD%95%E4%B8%AD%E9%82%A3%E4%B9%88%E4%BD%A0%E9%9C%80%E8%A6%81%E8%BF%99%E6%A0%B7%E5%86%99(%E4%BE%8B%E5%A6%82%E5%9C%A8D%E7%9B%98%E4%B8%8B%E7%9A%84post.txt)">如果你创建post.txt文件不在bin目录中那么你需要这样写(例如在D盘下的post.txt)</h3>
+<h3 id="如果你创建posttxt文件不在bin目录中那么你需要这样写例如在d盘下的posttxt"><a class="markdownIt-Anchor" href="#如果你创建posttxt文件不在bin目录中那么你需要这样写例如在d盘下的posttxt"></a> 如果你创建post.txt文件不在bin目录中那么你需要这样写(例如在D盘下的post.txt)</h3>
 <p>【ab -n 100  -c 10 -p d:\post.txt -T application/x-www-form-urlencoded <a href="http://localhost:8085/add%E3%80%91" target="_blank" rel="noopener">http://localhost:8085/add】</a></p>
 <blockquote>
 <p>最后我们来测试如何使用post的方式传json格式的参数</p>
@@ -262,8 +262,31 @@
 【ab -n 100  -c 10 -p post.txt -T application/json <a href="http://localhost:8085/add%E3%80%91" target="_blank" rel="noopener">http://localhost:8085/add】</a><br>
 <img src="http://qiniu.zuoyoush.com/img/Apacheab/%E5%AE%89%E8%A3%85apach_db_013.png-watermark1" alt="图片引用"></p>
 </blockquote>
-<h3 id="%E5%A6%82%E6%9E%9C%E4%BD%A0%E8%BF%98%E9%9C%80%E8%A6%81%E6%B7%BB%E5%8A%A0header%E8%AF%B7%E5%8F%82%E8%80%83%E3%80%90%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E3%80%90ab%E3%80%91%E5%87%BA%E7%8E%B0%E5%A6%82%E4%B8%8B%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E5%8F%82%E6%95%B0%E7%9A%84%E5%90%AB%E4%B9%89%E3%80%91">如果你还需要添加header请参考【使用命令【ab】出现如下，可以看到参数的含义】</h3>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+<h3 id="如果你还需要添加header请参考使用命令ab出现如下可以看到参数的含义"><a class="markdownIt-Anchor" href="#如果你还需要添加header请参考使用命令ab出现如下可以看到参数的含义"></a> 如果你还需要添加header请参考【使用命令【ab】出现如下，可以看到参数的含义】</h3>
+<h3 id="测试结果主要看三个数据"><a class="markdownIt-Anchor" href="#测试结果主要看三个数据"></a> 测试结果主要看三个数据</h3>
+<blockquote>
+<p>1.Requests per second：吞吐率<br>
+服务器并发处理能力的量化描述，单位是reqs/s，指的是某个并发用户数下单位时间内处理的请求数。某个并发用户数下单位时间内能处理的最大请求数，称之为最大吞吐率。<br>
+计算公式：总请求数 / 处理完成这些请求数所花费的时间，即<br>
+Request per second = Complete requests / Time taken for tests</p>
+</blockquote>
+<blockquote>
+<p>2.Time per request：上面的是用户平均请求等待时间<br>
+处理完成所有请求数所花费的时间/ （总请求数 / 并发用户数），即<br>
+Time per request = Time taken for tests /（ Complete requests / Concurrency Level）</p>
+</blockquote>
+<blockquote>
+<p>3.Time per request：下面的是服务器平均请求处理时间<br>
+处理完成所有请求数所花费的时间 / 总请求数，即<br>
+Time taken for / testsComplete requests<br>
+可以看到，它是吞吐率的倒数。<br>
+同时，它也=用户平均请求等待时间/并发用户数，即<br>
+Time per request / Concurrency Level<br>
+可以根据固定并发数，增加请求次数或者固定请求次数，调整并发数来查看上面三个值得变化来调优服务器</p>
+</blockquote>
+<h3 id="也可以查看下图我抄被人的也忘了是哪篇文章了虽然有个错别字-还是要感谢"><a class="markdownIt-Anchor" href="#也可以查看下图我抄被人的也忘了是哪篇文章了虽然有个错别字-还是要感谢"></a> 也可以查看下图（我抄被人的也忘了是哪篇文章了，虽然有个错别字。还是要感谢）</h3>
+<p><img src="http://qiniu.zuoyoush.com/img/Apacheab/%E5%AE%89%E8%A3%85apach_db_014.jpg-watermark1" alt="图片引用"></p>
+
         </div>
 
         <!--隐藏-->
